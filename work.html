@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>All Work — Patrick Killeen</title>
+<meta name="description" content="Complete work archive. Motion, VFX, 3D and direction by Patrick Killeen." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --void:#08090c;
+  --ink:#0e1015;
+  --slate:#14171f;
+  --line:rgba(236,234,242,0.09);
+  --bone:#f2f0f6;
+  --ash:rgba(242,240,246,0.44);
+  --ash-dim:rgba(242,240,246,0.22);
+  --ice:#6fd6ff;
+  --violet:#6a5cff;
+  --ember:#ff7a3d;
+  --display:'Bodoni Moda',serif;
+  --body:'Jost',sans-serif;
+  --gutter:clamp(20px,5vw,72px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--void);color:var(--bone);
+  font-family:var(--body);font-weight:300;font-size:16px;line-height:1.75;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+
+#field{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+.stack{position:relative;z-index:1}
+
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px var(--gutter);
+  background:linear-gradient(to bottom, rgba(8,9,12,.92), transparent);
+}
+.mark{
+  font-family:var(--body);font-weight:300;font-size:11px;
+  letter-spacing:.34em;text-transform:uppercase;
+  text-decoration:none;color:var(--bone);margin-right:-.34em;
+}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  font-weight:400;text-decoration:none;color:var(--bone);opacity:.6;transition:opacity .25s;
+}
+.nav-links a:hover,.nav-links a[aria-current]{opacity:1}
+
+/* ---------- HEAD ---------- */
+.head{
+  padding:clamp(130px,18vh,190px) var(--gutter) clamp(38px,6vh,64px);
+  text-align:center;
+}
+.kicker{
+  font-family:var(--body);font-weight:300;
+  font-size:clamp(13px,1.5vw,17px);letter-spacing:.42em;
+  text-transform:uppercase;color:var(--ash);margin-right:-.42em;
+  margin-bottom:clamp(20px,3.4vh,38px);
+}
+.head h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(34px,6vw,76px);line-height:1.16;letter-spacing:-0.015em;
+  color:var(--bone);
+}
+.fat{font-weight:900}
+.thin{font-weight:400}
+.qm{font-weight:400;color:rgba(242,240,246,.38)}
+.count{
+  margin-top:clamp(16px,2.6vh,26px);
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ash-dim);
+}
+
+/* ---------- GRID ---------- */
+.grid{
+  padding:0 var(--gutter) clamp(70px,10vh,120px);
+  columns:3;
+  column-gap:14px;
+}
+@media (max-width:1000px){ .grid{ columns:2 } }
+@media (max-width:620px){ .grid{ columns:1 } }
+
+.tile{
+  break-inside:avoid;
+  margin:0 0 14px;
+  position:relative;
+  display:block;width:100%;
+  background:linear-gradient(150deg,var(--slate),var(--ink));
+  border:1px solid var(--line);
+  overflow:hidden;cursor:pointer;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1);
+}
+.tile.in{opacity:1;transform:none}
+.tile img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;object-position:center 32%;
+  transition:transform .8s cubic-bezier(.2,.7,.3,1), filter .5s ease;
+}
+.tile:hover img{transform:scale(1.04);filter:brightness(.5)}
+.tile-veil{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;text-align:center;
+  opacity:0;transition:opacity .4s ease;
+}
+.tile:hover .tile-veil{opacity:1}
+.tile-title{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(19px,2vw,30px);line-height:1.15;
+  letter-spacing:-0.01em;color:var(--bone);
+}
+
+/* ---------- MODAL ---------- */
+.modal{
+  position:fixed;inset:0;background:rgba(4,4,7,.96);
+  display:none;align-items:center;justify-content:center;
+  z-index:9999;padding:clamp(20px,5vw,64px);
+  opacity:0;transition:opacity .3s ease;
+}
+.modal.open{display:flex;opacity:1}
+.modal-inner{position:relative;width:100%;max-width:1240px}
+.modal-frame{position:relative;width:100%;padding-top:56.25%}
+.modal-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.modal-meta{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;padding:16px 2px 0;
+}
+.modal-title{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(16px,1.6vw,22px);letter-spacing:-0.01em;color:var(--bone);
+}
+.modal-credit{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ash);
+}
+.modal-close{
+  position:absolute;top:-48px;right:0;
+  width:38px;height:38px;background:transparent;
+  border:1px solid rgba(255,255,255,.25);color:var(--bone);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:border-color .3s;
+}
+.modal-close:hover{border-color:var(--ember)}
+
+/* ---------- FOOT ---------- */
+.foot{
+  padding:26px var(--gutter);border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;background:rgba(8,9,12,.72);
+}
+.foot p,.foot a{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim);text-decoration:none}
+.foot a:hover{color:var(--bone)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .tile{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+
+<div class="stack">
+
+<nav class="nav">
+  <a href="index.html" class="mark">Patrick Killeen</a>
+  <ul class="nav-links">
+    <li><a href="work.html" aria-current="page">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="head">
+  <p class="kicker">Archive</p>
+  <h1><span class="qm">&ldquo;</span><span class="thin">All my hard</span> <span class="fat">work.</span><span class="qm">&rdquo;</span></h1>
+  <p class="count">And collaborations</p>
+</header>
+
+<main class="grid" id="grid"></main>
+
+<div class="modal" id="modal">
+  <div class="modal-inner">
+    <button class="modal-close" id="modalClose" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l10 10M12 2L2 12" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal-frame">
+      <iframe id="modalFrame" src="" frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+        referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</div>
+
+<footer class="foot">
+  <p>&copy; 2026 Patrick Killeen</p>
+  <a href="index.html">Back to home</a>
+</footer>
+
+</div>
+
+<script>
+/* =========================================================
+   THE ONLY THING YOU EDIT.
+   One line per video. Add, remove or reorder freely.
+
+     id     the Vimeo video number. From vimeo.com/123456789
+            it is 123456789. Works with manage URLs too.
+     hash   ONLY needed if the video is unlisted. When the share link
+            looks like vimeo.com/123456789/abc123def it is the second
+            part. Leave it out for public videos.
+     title  what shows when someone hovers the tile.
+     ratio  the shape of the tile. Use the real shape of the
+            video: '16/9' wide, '9/16' vertical, '1/1' square,
+            '4/5' portrait, '2.39/1' scope.
+   ========================================================= */
+var WORK = [
+  // Ordered newest to oldest. Vimeo ids increase with upload date, so the
+  // id is the sort key. Move an entry by hand if its upload date and its
+  // production date differ.
+  { id:'1218504798', hash:'a8be75b27a', title:'Vayu New Wing, Aura', ratio:'16/9', poster:'https://i.vimeocdn.com/video/2190459927-27d3acdbca7cf2f7eac3fb43744797c6b84f8f36642b93dae953796c72c7ed99-d?f=webp&region=us&v=20260815' },
+  { poster:'work/gillette-running.png', id:'1218467584', hash:'1807ea1ef0', title:'Gillette x NBA — Running', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
+  { poster:'https://i.vimeocdn.com/video/2190405215-d3a32f46ae7f4d481381e7a6ab9943f600b4ddf3252c8640cf85b499087e0298-d?f=webp&region=us&v=20260815', id:'1218467583', hash:'c0d5bd0cd6', title:'Gillette x NBA — Tram', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
+  { poster:'work/gillette-alley.png', id:'1218467582', hash:'dd771d7cc9', title:'Gillette x NBA — Melbourne Alley', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
+  { id:'1217599545', hash:'4cf06f0d00', title:'Showreel 2026', ratio:'16/9', poster:'https://i.vimeocdn.com/video/2189322871-cc0641c09d3dbdb1e5ee4c1dfad96dc5370cdbaef667dd3c6e42a8b5fd161b36-d?f=webp&region=us&v=20260815' },
+  { id:'1202405326', title:'23 Bulbs Data', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1202405325', title:'Hole In One', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653788', title:'Sora', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653768', title:'Pure Blonde', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653717', title:'Essential Talent', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653716', title:'Evair', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653715', title:'Catch Cardi', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1191294534', hash:'4a206c4b78', title:'Star Trek — Strange New Worlds', ratio:'16/9', credit:'In collaboration with Bunker' },
+  { id:'955628500', hash:'9194707e37', title:'Skybox', ratio:'16/9', credit:'In collaboration with Bunker' },
+  { id:'569586701', hash:'58fca01ca8', title:'Covid-19 Tracer App', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'555999608', hash:'e8fe123c67', title:'Ngāti Paoa', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'555999370', hash:'eac5c5dfde', title:'Waikato Tainui', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'512845330', hash:'e088b0c97e', title:'Isuzu D-Max', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'510952804', hash:'e51dffd07a', title:'Diwali', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'500605000', hash:'feb15acd30', title:'Subaru Forester', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'493925028', hash:'96bbdfa7d4', title:'Covid-19 PSA Aotearoa', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'452051201', hash:'380a5f02cb', title:'Pecha Kucha Titles', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'443219985', hash:'9c668770ec', title:'Les Mills x Reebok', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'436294611', hash:'cd2eb843b0', title:'Tmp Master Vo 060720-1', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'418267921', hash:'8dfcf043cb', title:'CD_30_0045', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'392438036', hash:'0b0ea7eeeb', title:'Tuia 250 Titles', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'385859820', hash:'c385d25318', title:'Auckland Museum — Māori Journey II', ratio:'1/1' },
+  { id:'385857331', hash:'44fa91d3fa', title:'Auckland Museum — Māori Journey I', ratio:'3.5/1' },
+  { id:'373006334', hash:'1f2c94642f', title:'Spark Play', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'358957972', hash:'83b7099aa4', title:'RAV4 — Soccer Mum', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'340617285', hash:'3847f26e4e', title:'Monstrum Marinum', ratio:'16/9' },
+  { id:'317890579', hash:'12f6d0270c', title:'Hyundai', ratio:'16/9' },
+  { id:'305411311', hash:'59013132dc', title:'Planets', ratio:'16/9' },
+  { id:'303571158', hash:'7cb82c2fba', title:'Light and Lines', ratio:'16/9' },
+  { id:'302933026', hash:'0354b4b798', title:'Flower Animation', ratio:'16/9' },
+  { id:'281519655', hash:'94b8ecca59', title:'Xplore Orbs', ratio:'16/9' },
+  { id:'280441199', hash:'958fe47667', title:'Cadbury Catch', ratio:'16/9', credit:'In collaboration with TVNZ Blacksand' },
+  { id:'269093431', hash:'55bfd50669', title:'Meridian Energy', ratio:'16/9', credit:'In collaboration with toybox' },
+  { id:'239045152', hash:'eeb9fb75ae', title:'Genesis Energy', ratio:'16/9', credit:'In collaboration with toybox' },
+  { id:'219455154', hash:'294659423f', title:'Nike Quantum', ratio:'16/9' },
+  { id:'24907528', hash:'6d4021bb5d', title:'Kidszone — Night and Day', ratio:'16/9' },
+  { id:'23517945', hash:'0a6d836aba', title:'Kidszone — Lights', ratio:'16/9' },
+  { id:'23517075', hash:'ffb19398af', title:'Kidszone — Nature', ratio:'16/9' }
+];
+
+(function(){
+  'use strict';
+
+  /* ---------- build the grid ---------- */
+  var grid = document.getElementById('grid');
+
+  WORK.forEach(function(w){
+    var t = document.createElement('div');
+    t.className = 'tile';
+    t.setAttribute('role','button');
+    t.setAttribute('tabindex','0');
+    t.setAttribute('aria-label', 'Play ' + w.title);
+    t.dataset.vimeo = w.id;
+    if(w.hash) t.dataset.hash = w.hash;
+    t.dataset.title = w.title || '';
+    if(w.credit) t.dataset.credit = w.credit;
+    t.style.aspectRatio = w.ratio || '16/9';
+
+    var img = document.createElement('img');
+    img.alt = w.title;
+    img.loading = 'lazy';
+    /* w.poster is the url Vimeo publishes for that video, used where we have
+       it because vumbnail only serves a small frame. vumbnail is the fallback. */
+    var fb = 'https://vumbnail.com/' + w.id + '.jpg';
+    img.onerror = function(){
+      if(img.src !== fb){ img.src = fb; return; }
+      img.remove();
+    };
+    img.src = w.poster || fb;
+
+    var veil = document.createElement('div');
+    veil.className = 'tile-veil';
+    var h = document.createElement('p');
+    h.className = 'tile-title';
+    h.textContent = w.title;
+    veil.appendChild(h);
+
+    t.appendChild(img);
+    t.appendChild(veil);
+    grid.appendChild(t);
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.08});
+  document.querySelectorAll('.tile').forEach(function(el){ io.observe(el); });
+
+  /* ---------- modal ---------- */
+  var modal = document.getElementById('modal');
+  var frame = document.getElementById('modalFrame');
+
+  var mTitle = document.getElementById('modalTitle');
+  var mCredit = document.getElementById('modalCredit');
+
+  function open(id, hash, title, credit){
+    if(!id) return;
+    frame.src = 'https://player.vimeo.com/video/' + id +
+                (hash ? '?h=' + hash + '&' : '?') +
+                'autoplay=1&badge=0&byline=0&title=0&portrait=0&dnt=1';
+    if(mTitle)  mTitle.textContent  = title  || '';
+    if(mCredit) mCredit.textContent = credit || '';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    frame.src = '';
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  grid.addEventListener('click', function(e){
+    var t = e.target.closest('.tile');
+    if(t) open(t.dataset.vimeo, t.dataset.hash, t.dataset.title, t.dataset.credit);
+  });
+  grid.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var t = e.target.closest('.tile');
+    if(t){ e.preventDefault(); open(t.dataset.vimeo, t.dataset.hash, t.dataset.title, t.dataset.credit); }
+  });
+  document.getElementById('modalClose').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+
+  /* ---------- flow field, same as the home page ---------- */
+  var cv = document.getElementById('field');
+  if(!cv) return;
+  var ctx = cv.getContext('2d', { alpha:false });
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W=0,H=0,DPR=1;
+
+  var PERM = new Uint8Array(512);
+  (function(){
+    var p=new Uint8Array(256),i,j,t;
+    for(i=0;i<256;i++) p[i]=i;
+    for(i=255;i>0;i--){ j=(Math.random()*(i+1))|0; t=p[i]; p[i]=p[j]; p[j]=t; }
+    for(i=0;i<512;i++) PERM[i]=p[i&255];
+  })();
+  function fadeC(t){ return t*t*t*(t*(t*6-15)+10); }
+  function mix(a,b,t){ return a+t*(b-a); }
+  function grad(h,x,y){
+    switch(h&3){ case 0:return x+y; case 1:return -x+y; case 2:return x-y; default:return -x-y; }
+  }
+  function noise(x,y){
+    var X=Math.floor(x)&255,Y=Math.floor(y)&255;
+    var xf=x-Math.floor(x),yf=y-Math.floor(y);
+    var u=fadeC(xf),v=fadeC(yf);
+    var aa=PERM[PERM[X]+Y],ba=PERM[PERM[X+1]+Y];
+    var ab=PERM[PERM[X]+Y+1],bb=PERM[PERM[X+1]+Y+1];
+    return mix(mix(grad(aa,xf,yf),grad(ba,xf-1,yf),u),
+               mix(grad(ab,xf,yf-1),grad(bb,xf-1,yf-1),u),v);
+  }
+  var SCALE=0.0018, drift=0;
+  function angleAt(x,y){ return noise(x*SCALE,y*SCALE+drift)*Math.PI*3; }
+
+  var ICE=[111,214,255],VIO=[106,92,255],EMB=[255,122,61],PALE=[200,214,240];
+  var parts=[],AMBIENT=300,CAP=2200;
+
+  function ambient(){
+    var e=Math.random(),x,y;
+    if(e<.5){ x=Math.random()*W; y=Math.random()*H; }
+    else if(e<.75){ x=-20+Math.random()*40; y=Math.random()*H; }
+    else { x=Math.random()*W; y=H+20-Math.random()*40; }
+    var r=Math.random();
+    var c = r<.55?VIO:(r<.9?ICE:PALE);
+    return { x:x,y:y,px:x,py:y,
+      life:390+Math.random()*630,max:1020,
+      w:0.4+Math.random()*0.5,sp:0.5+Math.random()*0.9,
+      a0:0.085+Math.random()*0.11,c:c,amb:true };
+  }
+  function emit(x,y){
+    if(parts.length>CAP) return;
+    for(var i=0;i<6;i++){
+      var r=Math.random();
+      var c = r<.5?ICE:(r<.82?PALE:EMB);
+      var sp=1.1+Math.random()*1.5, ang=Math.random()*Math.PI*2;
+      var sx=x+(Math.random()-.5)*26, sy=y+(Math.random()-.5)*26;
+      parts.push({ x:sx,y:sy,px:sx,py:sy,
+        vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,
+        k:0.022+Math.random()*0.016,
+        life:225+Math.random()*300,max:525,
+        w:0.5+Math.random()*0.8,sp:sp,
+        a0:0.28+Math.random()*0.26,c:c,amb:false });
+    }
+  }
+  function step(p){
+    var a=angleAt(p.x,p.y);
+    p.px=p.x; p.py=p.y;
+    if(p.amb){ p.x+=Math.cos(a)*p.sp; p.y+=Math.sin(a)*p.sp; }
+    else{
+      var fx=Math.cos(a)*p.sp, fy=Math.sin(a)*p.sp;
+      p.vx+=(fx-p.vx)*p.k; p.vy+=(fy-p.vy)*p.k;
+      p.x+=p.vx; p.y+=p.vy;
+    }
+    p.life--;
+  }
+  function draw(p){
+    var t=p.life/p.max;
+    var al=p.a0*(t<.12?t/.12:1)*(t>.88?(1-t)/.12:1);
+    if(al<=0) return;
+    ctx.strokeStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+al.toFixed(3)+')';
+    ctx.lineWidth=p.w;
+    ctx.beginPath(); ctx.moveTo(p.px,p.py); ctx.lineTo(p.x,p.y); ctx.stroke();
+  }
+  function dead(p){ return p.life<=0||p.x<-60||p.x>W+60||p.y<-60||p.y>H+60; }
+  function still(){
+    ctx.fillStyle='#08090c'; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<460;i++){
+      var p=ambient(); p.a0=0.14;
+      for(var s=0;s<260;s++){ if(dead(p)) break; step(p); draw(p); }
+    }
+  }
+  function resize(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=window.innerWidth; H=window.innerHeight;
+    cv.width=Math.floor(W*DPR); cv.height=Math.floor(H*DPR);
+    cv.style.width=W+'px'; cv.style.height=H+'px';
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    ctx.fillStyle='#08090c'; ctx.fillRect(0,0,W,H);
+    ctx.lineCap='round';
+    AMBIENT = W<760?160:300;
+    parts=[];
+    for(var i=0;i<AMBIENT;i++) parts.push(ambient());
+    if(reduce) still();
+  }
+  var running=true;
+  function loop(){
+    requestAnimationFrame(loop);
+    if(!running) return;
+    drift+=0.0007;
+    ctx.fillStyle='rgba(8,9,12,0.028)';
+    ctx.fillRect(0,0,W,H);
+    for(var i=parts.length-1;i>=0;i--){
+      var p=parts[i];
+      step(p); draw(p);
+      if(dead(p)){ if(p.amb) parts[i]=ambient(); else parts.splice(i,1); }
+    }
+  }
+  var lastX=0,lastY=0,lastT=0;
+  document.addEventListener('pointermove',function(e){
+    if(reduce) return;
+    var now=performance.now();
+    if(now-lastT<14) return;
+    lastT=now;
+    var x=e.clientX,y=e.clientY;
+    var dx=x-lastX,dy=y-lastY;
+    lastX=x; lastY=y;
+    if(Math.sqrt(dx*dx+dy*dy)<1.5) return;
+    emit(x,y);
+  },{passive:true});
+  window.addEventListener('resize',resize,{passive:true});
+  document.addEventListener('visibilitychange',function(){ running=!document.hidden; });
+
+  resize();
+  if(!reduce) requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
