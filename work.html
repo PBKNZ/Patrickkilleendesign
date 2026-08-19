@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PBK — Patrick Brian Killeen</title>
-<meta name="description" content="Patrick Brian Killeen. Motion, VFX, 3D, 2D, art direction and editing. Two decades of moving image." />
+<title>All Work — Patrick Killeen</title>
+<meta name="description" content="Complete work archive. Motion, VFX, 3D and direction by Patrick Killeen." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -23,44 +23,25 @@
   --display:'Bodoni Moda',serif;
   --body:'Jost',sans-serif;
   --gutter:clamp(20px,5vw,72px);
-  --scrim:rgba(8,9,12,0.72);
-  --gap:clamp(6px,1vw,14px);
-  /* one value drives the space above AND below the statement */
-  --stack-gap:clamp(20px,3.4vh,38px);
-  /* the disciplines sit twice as far below the statement */
-  --disc-gap:calc(var(--stack-gap) * 2);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  background:var(--void);
-  color:var(--bone);
-  font-family:var(--body);
-  font-weight:300;
-  font-size:16px;
-  line-height:1.75;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
+  background:var(--void);color:var(--bone);
+  font-family:var(--body);font-weight:300;font-size:16px;line-height:1.75;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
 a{color:inherit}
 :focus-visible{outline:2px solid var(--ember);outline-offset:3px}
 
-#field{
-  position:fixed;inset:0;width:100%;height:100%;
-  z-index:0;display:block;pointer-events:none;
-}
-/* sits above the page text so lines can be seen crossing the white PBK */
-#fieldTop{
-  position:fixed;inset:0;width:100%;height:100%;
-  z-index:5;display:block;pointer-events:none;
-}
+#field{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
 .stack{position:relative;z-index:1}
 
-/* ---------- NAV ---------- */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:60;
   display:flex;align-items:center;justify-content:space-between;
   padding:22px var(--gutter);
+  background:linear-gradient(to bottom, rgba(8,9,12,.92), transparent);
 }
 .mark{
   font-family:var(--body);font-weight:300;font-size:11px;
@@ -70,251 +51,75 @@ a{color:inherit}
 .nav-links{display:flex;gap:26px;list-style:none}
 .nav-links a{
   font-size:10px;letter-spacing:.28em;text-transform:uppercase;
-  font-weight:400;text-decoration:none;color:var(--bone);opacity:.6;
-  transition:opacity .25s;
+  font-weight:400;text-decoration:none;color:var(--bone);opacity:.6;transition:opacity .25s;
 }
-.nav-links a:hover{opacity:1}
+.nav-links a:hover,.nav-links a[aria-current]{opacity:1}
 
-/* ---------- HERO ---------- */
-.hero{
-  position:relative;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:clamp(140px,20vh,215px) var(--gutter) clamp(54px,9vh,104px);
+/* ---------- HEAD ---------- */
+.head{
+  padding:clamp(130px,18vh,190px) var(--gutter) clamp(38px,6vh,64px);
   text-align:center;
 }
-.hero-scrim{
-  position:absolute;inset:-10% 0;pointer-events:none;z-index:0;
-  background:radial-gradient(60% 58% at 50% 48%, rgba(8,9,12,.88) 0%, rgba(8,9,12,.52) 45%, transparent 80%);
-}
-.monoblock{position:relative;z-index:2;display:inline-block}
-
 .kicker{
-  font-family:var(--body);
-  font-weight:300;
-  font-size:clamp(13px,1.5vw,17px);
-  letter-spacing:.42em;
-  text-transform:uppercase;
-  color:var(--ash);
-  margin-bottom:var(--stack-gap);
-  /* tracking adds a gap after the last letter, this recentres the line */
-  margin-right:-.42em;
+  font-family:var(--body);font-weight:300;
+  font-size:clamp(13px,1.5vw,17px);letter-spacing:.42em;
+  text-transform:uppercase;color:var(--ash);margin-right:-.42em;
+  margin-bottom:clamp(20px,3.4vh,38px);
 }
-
-/* =========================================================
-   THE STATEMENT
-   Swap the wording in the HTML. Keep it to two short lines.
-   Other lines that work with this layout:
-     "Twenty years / making things move."
-     "The idea is easy. / Making you feel it isn't."
-     "Anyone can render it. / Not everyone can land it."
-     "I make things move. / That's the whole job."
-   ========================================================= */
-.statement{
-  --stmt-size:clamp(24px,4.9vw,64px);
-
-  font-family:var(--display);
-  font-weight:400;
-  font-size:var(--stmt-size);
-  line-height:1.16;
-  letter-spacing:-0.015em;
-  max-width:30ch;
-  margin:0 auto;
-  text-align:center;
+.head h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(34px,6vw,76px);line-height:1.16;letter-spacing:-0.015em;
   color:var(--bone);
 }
-/* weight alone carries the emphasis now */
 .fat{font-weight:900}
 .thin{font-weight:400}
-.ital{font-style:italic;font-weight:400}
-/* the quote marks sit back so the words stay dominant */
-.qm{
-  font-weight:400;
-  color:rgba(242,240,246,.38);
+.qm{font-weight:400;color:rgba(242,240,246,.38)}
+.count{
+  margin-top:clamp(16px,2.6vh,26px);
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ash-dim);
 }
-.sline{display:block}
-/* the discipline line, tuned by hand */
-.disc{
-  --disc-size:11px;
-  --disc-track:0.58em;
 
-  font-family:var(--body);
-  font-weight:300;
-  font-size:var(--disc-size);
-  letter-spacing:var(--disc-track);
-  margin-right:calc(-1 * var(--disc-track));
-  text-transform:uppercase;
-  line-height:1.5;
-  display:block;
-  white-space:nowrap;
-  margin-top:var(--disc-gap);
-  color:var(--ash);
+/* ---------- GRID ---------- */
+.grid{
+  padding:0 var(--gutter) clamp(70px,10vh,120px);
+  columns:3;
+  column-gap:14px;
 }
-/* the words stay neutral, the dots carry the palette */
-.d{ color:inherit }
-.dsep{
-  opacity:.85;
-  font-size:2em;              /* the dot size, relative to the words */
-  /* the parent tracking is in em, so halve it here to keep the gaps even */
-  letter-spacing:calc(var(--disc-track) / 2);
-  line-height:0;              /* stops the bigger glyph growing the line */
+@media (max-width:1000px){ .grid{ columns:2 } }
+@media (max-width:620px){ .grid{ columns:1 } }
+
+.tile{
+  break-inside:avoid;
+  margin:0 0 14px;
   position:relative;
-  top:0.08em;                 /* nudges the dot back onto the optical centre */
-}
-.dsep:nth-child(2)  { color:var(--ice) }
-.dsep:nth-child(4)  { color:var(--violet) }
-.dsep:nth-child(6)  { color:var(--ember) }
-.dsep:nth-child(8)  { color:var(--ice) }
-.dsep:nth-child(10) { color:var(--violet) }
-.dsep:nth-child(12) { color:var(--ember) }
-.dsep:nth-child(14) { color:var(--ice) }
-@media (max-width:900px){
-  .disc{ --disc-size:8px;  --disc-track:0.42em; }
-}
-@media (max-width:560px){
-  .disc{ --disc-size:6.5px;--disc-track:0.26em; }
-}
-
-/* ---------- BANDS ---------- */
-.band{
-  padding:clamp(72px,11vh,132px) var(--gutter);
-  background:var(--scrim);
-}
-.band--open{background:transparent}
-.band--edge{border-top:1px solid var(--line)}
-.wrap{max-width:1180px;margin:0 auto}
-.label{
-  font-size:10px;letter-spacing:.34em;text-transform:uppercase;
-  font-weight:400;color:var(--ember);margin-bottom:16px;
-}
-.title{
-  font-family:var(--display);font-weight:500;
-  font-size:clamp(30px,5vw,60px);line-height:1.02;letter-spacing:-0.01em;
-}
-.title em{font-style:italic;font-weight:400}
-.lede{font-size:15px;color:var(--ash);max-width:560px;line-height:1.85}
-
-/* ---------- SHOWREEL : full bleed, cinematic crop ---------- */
-.reelband{
-  padding:0;
-  background:transparent;
-}
-.reel{
-  position:relative;width:100%;
-  aspect-ratio:2.05/1;
-  background:#000;
-  overflow:hidden;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  border-top:1px solid var(--line);
-}
-.reel::after{
-  content:'';position:absolute;inset:0;pointer-events:none;z-index:4;
-  background:radial-gradient(ellipse 70% 70% at 50% 50%, rgba(106,92,255,.10), transparent 72%);
-}
-/* 16:9 source scaled up to fill a 2.4:1 window, cropping top and bottom */
-.reel iframe{
-  position:absolute;top:50%;left:50%;
-  width:100%;height:116%;
-  transform:translate(-50%,-50%);
-  border:0;z-index:3;
-}
-.reel-poster{
-  position:absolute;inset:0;z-index:1;
-  width:100%;height:100%;object-fit:cover;
-  opacity:.3;transition:opacity .5s ease, transform .8s cubic-bezier(.2,.7,.3,1);
-}
-.reel:hover .reel-poster{opacity:.44;transform:scale(1.02)}
-.reel-face{position:relative;z-index:2;text-align:center;padding:20px}
-.reel-ring{
-  width:74px;height:74px;border-radius:50%;
-  border:1px solid rgba(111,214,255,.4);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 16px;transition:transform .35s, border-color .35s, background .35s;
-}
-.reel:hover .reel-ring{transform:scale(1.08);border-color:var(--ice);background:rgba(111,214,255,.1)}
-.reel-face p{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ash)}
-
-/* ---------- WORK ---------- */
-.work-head{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,6vh,68px);
-}
-.piece{
-  display:grid;grid-template-columns:1.35fr 1fr;
-  gap:clamp(24px,4vw,64px);align-items:center;
-  padding:clamp(28px,5vh,54px) 0;border-top:1px solid var(--line);
-}
-.piece:nth-child(even) .piece-visual{order:2}
-.piece-visual{
-  position:relative;aspect-ratio:16/9;overflow:hidden;
-  background:linear-gradient(135deg,var(--slate),var(--ink));
-  border:1px solid var(--line);
-}
-.piece-visual::before{
-  content:'';position:absolute;inset:0;z-index:1;
-  background:linear-gradient(135deg,rgba(106,92,255,.18),transparent 55%,rgba(111,214,255,.1));
-}
-.piece-visual img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;z-index:2;
-  transition:transform .7s cubic-bezier(.2,.7,.3,1);
-}
-.piece:hover .piece-visual img{transform:scale(1.035)}
-.piece-index{
-  position:absolute;left:16px;bottom:12px;z-index:3;
-  font-family:var(--display);font-weight:500;font-size:14px;
-  letter-spacing:.06em;color:rgba(242,240,246,.6);
-}
-.piece-title{
-  font-family:var(--display);font-weight:500;
-  font-size:clamp(24px,3.4vw,44px);line-height:1.04;
-  letter-spacing:-0.01em;margin-bottom:14px;
-}
-.piece-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.tag{
-  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--ash);border:1px solid var(--line);padding:5px 10px;
-}
-.piece-note{font-size:14px;color:var(--ash);max-width:380px}
-.piece-credit{
-  margin-top:14px;font-size:10px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--ash-dim);
-}
-
-/* thumbnails, shared by the single visuals and the trio cells */
-.piece-img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;z-index:2;
-  image-rendering:auto;
-  transition:transform .7s cubic-bezier(.2,.7,.3,1), filter .45s ease;
-}
-.piece-visual,.trio-cell{cursor:pointer}
-.piece-visual:hover .piece-img,.trio-cell:hover .piece-img{transform:scale(1.04);filter:brightness(.62)}
-.cell-badge{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);
-  width:52px;height:52px;border-radius:50%;z-index:3;
-  border:1px solid rgba(111,214,255,.45);background:rgba(8,9,12,.42);
-  backdrop-filter:blur(6px);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .35s ease, transform .35s ease;
-}
-.cell-badge svg{width:11px;height:13px;margin-left:2px}
-.piece-visual:hover .cell-badge,.trio-cell:hover .cell-badge{opacity:1;transform:translate(-50%,-50%) scale(1)}
-
-/* the Gillette triptych */
-.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.trio-cell{
-  position:relative;aspect-ratio:9/16;overflow:hidden;
+  display:block;width:100%;
   background:linear-gradient(150deg,var(--slate),var(--ink));
   border:1px solid var(--line);
+  overflow:hidden;cursor:pointer;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1);
 }
-.trio-cell::before{
-  content:'';position:absolute;inset:0;z-index:1;
-  background:linear-gradient(150deg,rgba(106,92,255,.16),transparent 60%,rgba(111,214,255,.1));
+.tile.in{opacity:1;transform:none}
+.tile img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;object-position:center 32%;
+  transition:transform .8s cubic-bezier(.2,.7,.3,1), filter .5s ease;
 }
-.piece--trio{align-items:center}
+.tile:hover img{transform:scale(1.04);filter:brightness(.5)}
+.tile-veil{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;text-align:center;
+  opacity:0;transition:opacity .4s ease;
+}
+.tile:hover .tile-veil{opacity:1}
+.tile-title{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(19px,2vw,30px);line-height:1.15;
+  letter-spacing:-0.01em;color:var(--bone);
+}
 
-/* VIDEO MODAL */
+/* ---------- MODAL ---------- */
 .modal{
   position:fixed;inset:0;background:rgba(4,4,7,.96);
   display:none;align-items:center;justify-content:center;
@@ -333,691 +138,369 @@ a{color:inherit}
   font-family:var(--display);font-weight:500;
   font-size:clamp(16px,1.6vw,22px);letter-spacing:-0.01em;color:var(--bone);
 }
-.modal-credit{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ash)}
-.modal-close{
-  position:absolute;top:-48px;right:0;width:38px;height:38px;
-  background:transparent;border:1px solid rgba(255,255,255,.25);
-  color:var(--bone);cursor:pointer;
+.modal-credit{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ash);
+}
+.tile-count{
+  position:absolute;top:12px;right:12px;z-index:3;
+  min-width:22px;height:22px;padding:0 6px;
+  border-radius:11px;border:1px solid rgba(242,240,246,.28);
+  background:rgba(8,9,12,.6);backdrop-filter:blur(6px);
   display:flex;align-items:center;justify-content:center;
+  font-size:10px;letter-spacing:.06em;color:var(--bone);
+  opacity:0;transition:opacity .35s;
+}
+.tile:hover .tile-count{opacity:1}
+
+.lightbox{
+  position:fixed;inset:0;background:rgba(4,4,7,.97);
+  display:none;flex-direction:column;
+  align-items:center;justify-content:center;
+  z-index:9999;padding:clamp(48px,6vw,80px) clamp(20px,7vw,110px);
+  opacity:0;transition:opacity .3s ease;
+}
+.lightbox.open{display:flex;opacity:1}
+.lb-stage{
+  flex:1;min-height:0;width:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+.lb-stage img{
+  max-width:100%;max-height:100%;
+  object-fit:contain;display:block;
+}
+.lb-meta{
+  display:flex;align-items:baseline;gap:20px;
+  padding-top:16px;flex-wrap:wrap;justify-content:center;
+}
+.lb-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;background:transparent;
+  border:1px solid rgba(255,255,255,.2);color:var(--bone);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:border-color .3s,background .3s;
+}
+.lb-arrow svg{width:15px;height:15px}
+.lb-arrow:hover{border-color:var(--ice);background:rgba(111,214,255,.08)}
+.lb-prev{left:clamp(12px,2vw,34px)}
+.lb-next{right:clamp(12px,2vw,34px)}
+.lightbox.single .lb-arrow{display:none}
+.lightbox .modal-close{top:clamp(16px,3vh,30px);right:clamp(16px,3vw,34px)}
+.modal-close{
+  position:absolute;top:-48px;right:0;
+  width:38px;height:38px;background:transparent;
+  border:1px solid rgba(255,255,255,.25);color:var(--bone);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
   transition:border-color .3s;
 }
 .modal-close:hover{border-color:var(--ember)}
-
-.allwork-wrap{
-  border-top:1px solid var(--line);
-  padding-top:clamp(28px,5vh,52px);
-  display:flex;justify-content:center;
-}
-.allwork{
-  display:inline-flex;align-items:center;gap:16px;
-  text-decoration:none;color:var(--bone);
-  font-size:11px;letter-spacing:.32em;text-transform:uppercase;
-  border:1px solid var(--line);
-  padding:18px 34px;
-  transition:border-color .35s, background .35s, gap .35s;
-}
-.allwork svg{width:22px;height:10px;transition:transform .35s}
-.allwork:hover{border-color:rgba(111,214,255,.5);background:rgba(111,214,255,.05);gap:22px}
-.allwork:hover svg{transform:translateX(3px)}
-
-/* ---------- ABOUT ---------- */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
-.portrait{
-  position:relative;aspect-ratio:4/5;overflow:hidden;
-  background:transparent;
-  border:none;
-}
-.portrait img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  -webkit-mask:radial-gradient(78% 74% at 58% 38%, #000 42%, rgba(0,0,0,.55) 72%, transparent 100%);
-  mask:radial-gradient(78% 74% at 58% 38%, #000 42%, rgba(0,0,0,.55) 72%, transparent 100%);
-}
-.about-body p{margin-bottom:20px;color:var(--ash);font-size:15.5px;line-height:1.9}
-.about-body p strong{color:var(--bone);font-weight:400}
-.about-body a{color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(111,214,255,.35)}
-
-/* credit blocks */
-.clients{
-  margin-top:clamp(38px,5.5vh,64px);
-  padding-top:clamp(28px,4vh,44px);
-  border-top:1px solid var(--line);
-}
-.clients:first-of-type{margin-top:clamp(56px,8vh,96px)}
-
-/* the skills read as a quiet column, not a headline list */
-.skills-list{
-  list-style:none;margin:0;padding:0;
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:14px 32px;
-}
-.skills-list li{
-  font-size:14px;color:var(--ash);line-height:1.5;
-  display:flex;align-items:flex-start;gap:10px;
-}
-.skills-list li::before{
-  content:'';flex-shrink:0;width:5px;height:5px;border-radius:50%;
-  background:var(--ember);margin-top:8px;
-}
-@media (max-width:860px){
-  .skills-list{grid-template-columns:1fr 1fr}
-}
-@media (max-width:520px){
-  .skills-list{grid-template-columns:1fr}
-}
-.clients-label{
-  font-size:10px;letter-spacing:.34em;text-transform:uppercase;
-  color:var(--ember);margin-bottom:20px;
-}
-.clients-list{
-  list-style:none;display:flex;flex-wrap:wrap;
-  gap:10px 0;margin:0;padding:0;
-}
-.clients-list li{
-  font-family:var(--display);font-weight:400;
-  font-size:clamp(15px,1.7vw,23px);line-height:1.3;
-  letter-spacing:-0.01em;color:var(--bone);
-  padding:0 22px 0 0;margin-right:22px;
-  position:relative;
-}
-.clients-list li::after{
-  content:'';position:absolute;right:0;top:50%;
-  width:4px;height:4px;border-radius:50%;
-  background:var(--ash-dim);transform:translateY(-50%);
-}
-.clients-list li:last-child{padding-right:0;margin-right:0}
-/* screen credits are the strongest line on this page, so they sit larger */
-.clients--screen .clients-list li{font-size:clamp(22px,3.2vw,44px)}
-.clients--screen .clients-list li::after{width:5px;height:5px}
-.clients-list li:last-child::after{display:none}
-
-/* ---------- CAPABILITY ---------- */
-.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.cap{background:var(--ink);padding:clamp(22px,3vw,34px)}
-.cap h3{font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:-0.01em;margin-bottom:10px}
-.cap p{font-size:13.5px;color:var(--ash);line-height:1.75}
-
-/* ---------- CONTACT ---------- */
-.contact-title{
-  font-family:var(--display);font-weight:500;
-  font-size:clamp(38px,8vw,110px);line-height:.98;
-  letter-spacing:-0.02em;margin-bottom:36px;
-}
-.contact-title em{font-style:italic;font-weight:400}
-.contact-rows{border-top:1px solid var(--line);max-width:640px}
-.crow{
-  display:flex;align-items:baseline;justify-content:space-between;
-  gap:20px;padding:18px 0;border-bottom:1px solid var(--line);
-}
-.crow span{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ash-dim)}
-.crow a{font-size:16px;text-decoration:none;color:var(--bone);transition:color .25s}
-.crow a:hover{color:var(--ember)}
 
 /* ---------- FOOT ---------- */
 .foot{
   padding:26px var(--gutter);border-top:1px solid var(--line);
   display:flex;align-items:center;justify-content:space-between;
-  gap:16px;flex-wrap:wrap;background:var(--scrim);
+  gap:16px;flex-wrap:wrap;background:rgba(8,9,12,.72);
 }
-.foot p{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim)}
+.foot p,.foot a{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim);text-decoration:none}
+.foot a:hover{color:var(--bone)}
 
-/* ---------- REVEAL ---------- */
-.rise{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.3,1)}
-.rise.in{opacity:1;transform:none}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width:860px){
-  .nav-links{gap:16px}
-  .piece{grid-template-columns:1fr;gap:20px}
-  .piece:nth-child(even) .piece-visual{order:0}
-  .about-grid{grid-template-columns:1fr}
-  .caps{grid-template-columns:1fr}
-}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .rise{opacity:1;transform:none;transition:none}
+  .tile{opacity:1;transform:none;transition:none}
 }
 </style>
 </head>
 <body>
 
 <canvas id="field" aria-hidden="true"></canvas>
-<canvas id="fieldTop" aria-hidden="true"></canvas>
 
 <div class="stack">
 
 <nav class="nav">
-  <a href="#" class="mark">Patrick Killeen</a>
+  <a href="index.html" class="mark">Patrick Killeen</a>
   <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="work.html" aria-current="page">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="hero-scrim"></div>
-  <div class="monoblock">
-    <p class="kicker">Patrick Killeen</p>
-    <h1 class="statement">
-      <span class="sline"><span class="qm">&ldquo;</span><span class="thin">The</span> <span class="fat">spark</span> <span class="thin">of an idea,</span></span>
-      <span class="sline"><span class="thin">the</span> <span class="fat">craft</span> <span class="thin">and creation,</span></span>
-      <span class="sline"><span class="thin">that&rsquo;s what</span> <span class="fat">excites</span> <span class="thin">me.</span><span class="qm">&rdquo;</span></span>
-    </h1>
-    <span class="disc" id="disc"><span class="d">Motion</span><span class="dsep"> &middot; </span><span class="d">VFX</span><span class="dsep"> &middot; </span><span class="d">3D</span><span class="dsep"> &middot; </span><span class="d">2D</span><span class="dsep"> &middot; </span><span class="d">Art Director</span><span class="dsep"> &middot; </span><span class="d">Editor</span><span class="dsep"> &middot; </span><span class="d">Concepts</span><span class="dsep"> &middot; </span><span class="d">Ideas</span></span>
-  </div>
+<header class="head">
+  <p class="kicker">Archive</p>
+  <h1><span class="qm">&ldquo;</span><span class="thin">All my hard</span> <span class="fat">work.</span><span class="qm">&rdquo;</span></h1>
+  <p class="count">And collaborations</p>
 </header>
 
-<!-- ============ SHOWREEL ============ -->
-<section class="reelband" id="reel">
-  <!-- To wire the reel: put your Vimeo ID inside data-vimeo="" below -->
-  <div class="reel rise" id="reelPanel" data-vimeo="1219074620">
-    <img class="reel-poster" id="reelPoster" src="https://i.vimeocdn.com/video/2191177772-700eae5dbfba8f11a06a9bcff6a00ec09dcb0899655751be1424c6800ea17249-d?f=webp&amp;region=us" data-fb="https://vumbnail.com/1219074620.jpg" alt="" aria-hidden="true" onerror="this.onerror=null;this.src=this.dataset.fb" />
-    <div class="reel-face" id="reelFace">
-      <div class="reel-ring">
-        <svg width="14" height="16" viewBox="0 0 14 16" fill="none" aria-hidden="true">
-          <path d="M1.5 1L12.5 8L1.5 15V1Z" fill="rgba(242,240,246,.9)"/>
-        </svg>
-      </div>
-      <p>Showreel</p>
-    </div>
+<main class="grid" id="grid"></main>
+
+<div class="lightbox" id="lightbox">
+  <button class="modal-close" id="lbClose" aria-label="Close">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l10 10M12 2L2 12" stroke-linecap="round"/></svg>
+  </button>
+  <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 2L4 8l6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button class="lb-arrow lb-next" id="lbNext" aria-label="Next">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="lb-stage"><img id="lbImg" src="" alt="" /></div>
+  <div class="lb-meta">
+    <p class="modal-title" id="lbTitle"></p>
+    <p class="modal-credit" id="lbCount"></p>
   </div>
-</section>
+</div>
 
-<!-- ============ WORK ============ -->
-<section class="band band--edge" id="work">
-  <div class="wrap">
-    <div class="work-head">
-      <div class="rise">
-        <p class="label">Selected Work</p>
-        <h2 class="title">Things I<br><em>made move.</em></h2>
-      </div>
-      <p class="lede rise" style="max-width:340px">Commercials and social campaigns, channel branding and identity, title sequences, installations, and visual effects for film and television. You have probably seen my work in your day to day life. Now you know who did it.</p>
-    </div>
-
-    <!-- 01 — Gillette x NBA, three verticals as one piece -->
-    <article class="piece piece--trio rise">
-      <div class="trio">
-        <div class="trio-cell" data-vimeo="1218467583" data-hash="c0d5bd0cd6" data-title="Gillette x NBA — Tram" data-credit="In collaboration with Havas Media Network Australia">
-          <img class="piece-img" data-fb="https://vumbnail.com/1218467583.jpg" src="https://i.vimeocdn.com/video/2190405215-d3a32f46ae7f4d481381e7a6ab9943f600b4ddf3252c8640cf85b499087e0298-d?f=webp&amp;region=us&amp;v=20260815" alt="Gillette x NBA Tram spot" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-          <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-        </div>
-        <div class="trio-cell" data-vimeo="1218467584" data-hash="1807ea1ef0" data-title="Gillette x NBA — Running" data-credit="In collaboration with Havas Media Network Australia">
-          <img class="piece-img" data-fb="https://vumbnail.com/1218467584.jpg" src="work/gillette-running.jpg" alt="Gillette x NBA Running spot" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-          <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-        </div>
-        <div class="trio-cell" data-vimeo="1218467582" data-hash="dd771d7cc9" data-title="Gillette x NBA — Melbourne Alley" data-credit="In collaboration with Havas Media Network Australia">
-          <img class="piece-img" data-fb="https://vumbnail.com/1218467582.jpg" src="work/gillette-alley.jpg" alt="Gillette x NBA Melbourne Alley spot" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-          <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-        </div>
-      </div>
-      <div class="piece-body">
-        <h3 class="piece-title">Gillette x NBA</h3>
-        <div class="piece-tags"><span class="tag">Social</span><span class="tag">Campaign</span><span class="tag">Three spots</span></div>
-        <p class="piece-note">Tram, Running and Melbourne Alley. Vertical campaign spots cut for social.</p>
-        <p class="piece-credit">In collaboration with Havas Media Network Australia</p>
-      </div>
-    </article>
-
-    <!-- 02 -->
-    <article class="piece rise">
-      <div class="piece-visual" data-vimeo="1191294534" data-hash="4a206c4b78" data-title="Star Trek — Strange New Worlds" data-credit="In collaboration with Bunker">
-        <img class="piece-img" data-fb="https://vumbnail.com/1191294534.jpg" src="https://i.vimeocdn.com/video/2156265383-88792414ff8cb5bfc4b345faf8ea36ea8e43311080b27ada563068035611653f-d?f=webp&amp;region=us&amp;v=20260815" alt="Star Trek Strange New Worlds" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-        <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-      </div>
-      <div class="piece-body">
-        <h3 class="piece-title">Star Trek</h3>
-        <div class="piece-tags"><span class="tag">Broadcast</span><span class="tag">Branding</span><span class="tag">Titles</span></div>
-        <p class="piece-note">Title and identity work for Strange New Worlds.</p>
-        <p class="piece-credit">In collaboration with Bunker</p>
-      </div>
-    </article>
-
-    <!-- 03 -->
-    <article class="piece rise">
-      <div class="piece-visual" data-vimeo="443219985" data-hash="9c668770ec" data-title="Les Mills x Reebok" data-credit="In collaboration with CREATURE">
-        <img class="piece-img" data-fb="https://vumbnail.com/443219985.jpg" src="https://i.vimeocdn.com/video/932657521-032ff37ab7b1650d2c5050ec144cde0a351ecf118f5a9e804d29d61493abd8b2-d?f=webp&amp;region=us&amp;v=20260815" alt="Les Mills x Reebok" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-        <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-      </div>
-      <div class="piece-body">
-        <h3 class="piece-title">Les Mills x Reebok</h3>
-        <div class="piece-tags"><span class="tag">Commercial</span><span class="tag">Motion</span></div>
-        <p class="piece-note">Hero spot for the global fitness partnership.</p>
-        <p class="piece-credit">In collaboration with CREATURE</p>
-      </div>
-    </article>
-
-    <!-- 04 -->
-    <article class="piece rise">
-      <div class="piece-visual" data-vimeo="1194653768" data-hash="0c0a8d85a7" data-title="Pure Blonde" data-credit="In collaboration with Autonomous">
-        <img class="piece-img" data-fb="https://vumbnail.com/1194653768.jpg" src="https://i.vimeocdn.com/video/2160356461-3ea6a1f7fa0a1b607a56df2c56dfa6d59d6269898b37720570fea8ce56bbb6a3-d?f=webp&amp;region=us" alt="Pure Blonde" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-        <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-      </div>
-      <div class="piece-body">
-        <h3 class="piece-title">Pure Blonde</h3>
-        <div class="piece-tags"><span class="tag">Brand</span><span class="tag">Campaign</span></div>
-        <p class="piece-note">Brand campaign film.</p>
-        <p class="piece-credit">In collaboration with Autonomous</p>
-      </div>
-    </article>
-
-    <!-- 05 -->
-    <article class="piece rise">
-      <div class="piece-visual" data-vimeo="1194653716" data-hash="f903dda834" data-title="Evair" data-credit="In collaboration with Autonomous">
-        <img class="piece-img" data-fb="https://vumbnail.com/1194653716.jpg" src="https://i.vimeocdn.com/video/2160356446-e47dcd876666a267dcd31f0416979964b546de30ca6e282b667bc5b2085c1c55-d?f=webp&amp;region=us" alt="Evair" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-        <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-      </div>
-      <div class="piece-body">
-        <h3 class="piece-title">Evair</h3>
-        <div class="piece-tags"><span class="tag">Product</span><span class="tag">3D</span></div>
-        <p class="piece-note">Product film.</p>
-        <p class="piece-credit">In collaboration with Autonomous</p>
-      </div>
-    </article>
-
-    <!-- 06 -->
-    <article class="piece rise">
-      <div class="piece-visual" data-vimeo="955628500" data-hash="9194707e37" data-title="Skybox" data-credit="In collaboration with Bunker">
-        <img class="piece-img" data-fb="https://vumbnail.com/955628500.jpg" src="https://i.vimeocdn.com/video/2156254226-eac1e2ae58467edf368b8135276bafc5ea08e241ea6d84321c1e3e65122d75d7-d?f=webp&amp;region=us&amp;v=20260815" alt="Skybox" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-        <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-      </div>
-      <div class="piece-body">
-        <h3 class="piece-title">Skybox</h3>
-        <div class="piece-tags"><span class="tag">Broadcast</span><span class="tag">Design</span></div>
-        <p class="piece-note">Broadcast design and motion.</p>
-        <p class="piece-credit">In collaboration with Bunker</p>
-      </div>
-    </article>
-
-    <!-- 07 -->
-    <article class="piece rise">
-      <div class="piece-visual" data-vimeo="219455154" data-hash="294659423f" data-title="Nike Quantum">
-        <img class="piece-img" data-fb="https://vumbnail.com/219455154.jpg" src="https://i.vimeocdn.com/video/637598604-61bd3b0e8d816dc8a7fc630bc54b56a2ad86c2c42142919145279c308080a482-d?f=webp&amp;region=us&amp;v=20260815" alt="Nike Quantum" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-        <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-      </div>
-      <div class="piece-body">
-        <h3 class="piece-title">Nike Quantum</h3>
-        <div class="piece-tags"><span class="tag">3D</span><span class="tag">Product</span><span class="tag">Concept</span></div>
-        <p class="piece-note">Product-led 3D build and motion.</p>
-      </div>
-    </article>
-
-    <!-- 08 -->
-    <article class="piece rise">
-      <div class="piece-visual" data-vimeo="1194653788" data-title="Sora" data-credit="In collaboration with Autonomous">
-        <img class="piece-img" data-fb="https://vumbnail.com/1194653788.jpg" src="https://vumbnail.com/1194653788.jpg" alt="Sora" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
-        <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
-      </div>
-      <div class="piece-body">
-        <h3 class="piece-title">Sora</h3>
-        <div class="piece-tags"><span class="tag">Motion</span><span class="tag">Post</span></div>
-        <p class="piece-note">Motion and post.</p>
-        <p class="piece-credit">In collaboration with Autonomous</p>
-      </div>
-    </article>
-  </div>
-
-  <div class="wrap allwork-wrap">
-    <a href="work.html" class="allwork rise">
-      <span>All work</span>
-      <svg viewBox="0 0 22 10" fill="none" aria-hidden="true">
-        <path d="M0 5h20M16 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </div>
-</section>
-
-<!-- VIDEO MODAL -->
 <div class="modal" id="modal">
   <div class="modal-inner">
     <button class="modal-close" id="modalClose" aria-label="Close">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l10 10M12 2L2 12" stroke-linecap="round"/></svg>
     </button>
     <div class="modal-frame">
-      <iframe id="modalFrame" src="https://vumbnail.com/1194653788.jpg" frameborder="0"
+      <iframe id="modalFrame" src="" frameborder="0"
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
         referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    </div>
-    <div class="modal-meta">
-      <p class="modal-title" id="modalTitle"></p>
-      <p class="modal-credit" id="modalCredit"></p>
     </div>
   </div>
 </div>
 
-<!-- ============ ABOUT ============ -->
-<section class="band band--open band--edge" id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="portrait rise">
-        <img src="portrait.jpg" alt="Patrick Killeen" onerror="this.remove()" />
-      </div>
-      <div class="about-body rise">
-        <p class="label">About</p>
-        <h2 class="title" style="margin-bottom:28px">Twenty years,<br><em>one obsession.</em></h2>
-        <p><strong>I am a senior motion designer, CGI artist and director.</strong> Twenty years, based in Auckland.</p>
-        <p>The part I love is when someone has an idea and it is rough, or abstract, or hard to explain. I step in and help bring it to life.</p>
-        <p>Over the years that has meant channel identities, live studio graphics, product campaigns, installations, and visual effects for film and television. Some under my own name. A lot of it inside studios, where the credit sits with the building.</p>
-        <p>Outside of work, most of my time goes to a partner who is my biggest fan and I am hers, my three wonderful kids, and a fairly serious compulsion for the coast. That is where you will find us most weekends.</p>
-      </div>
-    </div>
-
-    <!-- WHAT I DO -->
-    <div class="clients rise">
-      <p class="clients-label">What I do</p>
-      <ul class="skills-list">
-        <li>Motion design &amp; CGI animation</li>
-        <li>Visual effects &amp; compositing</li>
-        <li>Creative direction &amp; storytelling</li>
-        <li>AI-driven content creation</li>
-        <li>Video editing &amp; post</li>
-        <li>Project management</li>
-      </ul>
-    </div>
-
-    <!-- SCREEN CREDITS -->
-    <div class="clients clients--screen rise">
-      <p class="clients-label">Film &amp; television</p>
-      <ul class="clients-list">
-        <li>M3GAN</li>
-        <li>Spartacus</li>
-        <li>The Royal Treatment</li>
-      </ul>
-    </div>
-
-    <!-- BRANDS -->
-    <div class="clients rise">
-      <p class="clients-label">Brands</p>
-      <ul class="clients-list">
-        <li>Gillette</li>
-        <li>NBA</li>
-        <li>Samsung</li>
-        <li>Ford</li>
-        <li>Star Trek</li>
-        <li>McDonald&rsquo;s</li>
-        <li>Sky</li>
-        <li>Les Mills x Reebok</li>
-        <li>Toyota RAV4</li>
-        <li>Cadbury</li>
-        <li>Palmolive</li>
-        <li>Anchor</li>
-        <li>Ajax</li>
-        <li>Spark</li>
-        <li>Meridian</li>
-        <li>Genesis</li>
-        <li>Auckland Museum</li>
-        <li>Pure Blonde</li>
-        <li>Seven Sharp</li>
-      </ul>
-    </div>
-
-    <!-- AGENCIES & STUDIOS -->
-    <div class="clients rise">
-      <p class="clients-label">Agencies &amp; studios</p>
-      <ul class="clients-list">
-        <li>Colenso BBDO</li>
-        <li>Ogilvy</li>
-        <li>FCB</li>
-        <li>Havas</li>
-        <li>Cheil</li>
-        <li>Flying Fish</li>
-        <li>Augusto</li>
-        <li>Pitchblack Partners</li>
-        <li>Bunker</li>
-        <li>Creaturepost</li>
-        <li>TVNZ</li>
-        <li>Toybox</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CAPABILITY ============ -->
-<section class="band band--edge">
-  <div class="wrap">
-    <div class="rise" style="margin-bottom:40px">
-      <p class="label">What I Do</p>
-      <h2 class="title">The <em>toolkit.</em></h2>
-    </div>
-    <div class="caps rise">
-      <div class="cap"><h3>3D &amp; CG</h3><p>Cinema 4D and Houdini. Look dev, lighting and render. Product, environment and character.</p></div>
-      <div class="cap"><h3>Motion Design</h3><p>After Effects. Titles, idents, explainers, branding and 2D.</p></div>
-      <div class="cap"><h3>VFX &amp; Compositing</h3><p>Clean-up, integration, effects and finishing for broadcast delivery.</p></div>
-      <div class="cap"><h3>Branding &amp; Identity</h3><p>Channel idents, logo and identity systems, social kits and brand toolkits. Built to flex across every placement.</p></div>
-      <div class="cap"><h3>Art Direction &amp; Concepts</h3><p>The bit before the tools. Working out what the thing should be, then setting the look. Boards, frames, direction.</p></div>
-      <div class="cap"><h3>Edit &amp; Story</h3><p>Cutting for rhythm and meaning, not just to fit the slot.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section class="band band--open band--edge" id="contact">
-  <div class="wrap">
-    <p class="label rise">Contact</p>
-    <h2 class="contact-title rise">Let's make<br><em>some magic.</em></h2>
-    <div class="contact-rows rise">
-      <div class="crow"><span>Email</span><a href="mailto:pat@autonomous.video">pat@autonomous.video</a></div>
-      <div class="crow"><span>Phone</span><a href="tel:+64279354207">+64 27 935 4207</a></div>
-      <div class="crow"><span>LinkedIn</span><a href="https://www.linkedin.com/in/patrick-killeen-5aa0b051/" target="_blank" rel="noopener">patrick-killeen</a></div>
-      <div class="crow"><span>Studio</span><a href="https://autonomous.video" target="_blank" rel="noopener">autonomous.video</a></div>
-    </div>
-  </div>
-</section>
-
 <footer class="foot">
-  <p>&copy; 2026 Patrick Brian Killeen</p>
-  <p>Auckland, New Zealand</p>
+  <p>&copy; 2026 Patrick Killeen</p>
+  <a href="index.html">Back to home</a>
 </footer>
 
-</div><!-- /.stack -->
+</div>
 
 <script>
+/* =========================================================
+   THE ONLY THING YOU EDIT.
+   One line per video. Add, remove or reorder freely.
+
+     id     the Vimeo video number. From vimeo.com/123456789
+            it is 123456789. Works with manage URLs too.
+     hash   ONLY needed if the video is unlisted. When the share link
+            looks like vimeo.com/123456789/abc123def it is the second
+            part. Leave it out for public videos.
+     title  what shows when someone hovers the tile.
+     ratio  the shape of the tile. Use the real shape of the
+            video: '16/9' wide, '9/16' vertical, '1/1' square,
+            '4/5' portrait, '2.39/1' scope.
+   ========================================================= */
+var WORK = [
+  // Ordered newest to oldest. Vimeo ids increase with upload date, so the
+  // id is the sort key. Move an entry by hand if its upload date and its
+  // production date differ.
+  { id:'1218504798', hash:'a8be75b27a', title:'Vayu New Wing, Aura', ratio:'16/9', poster:'https://i.vimeocdn.com/video/2190459927-27d3acdbca7cf2f7eac3fb43744797c6b84f8f36642b93dae953796c72c7ed99-d?f=webp&region=us&v=20260815' },
+  { poster:'work/gillette-running.jpg', id:'1218467584', hash:'1807ea1ef0', title:'Gillette x NBA — Running', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
+  { poster:'https://i.vimeocdn.com/video/2190405215-d3a32f46ae7f4d481381e7a6ab9943f600b4ddf3252c8640cf85b499087e0298-d?f=webp&region=us&v=20260815', id:'1218467583', hash:'c0d5bd0cd6', title:'Gillette x NBA — Tram', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
+  { poster:'work/gillette-alley.jpg', id:'1218467582', hash:'dd771d7cc9', title:'Gillette x NBA — Melbourne Alley', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
+  { id:'1219074620', hash:'25c6bf4d23', title:'Showreel 2026', ratio:'16/9', poster:'https://i.vimeocdn.com/video/2191177772-700eae5dbfba8f11a06a9bcff6a00ec09dcb0899655751be1424c6800ea17249-d?f=webp&region=us' },
+  { id:'1202405326', title:'23 Bulbs Data', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1202405325', title:'Hole In One', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653788', title:'Sora', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653768', hash:'0c0a8d85a7', poster:'https://i.vimeocdn.com/video/2160356461-3ea6a1f7fa0a1b607a56df2c56dfa6d59d6269898b37720570fea8ce56bbb6a3-d?f=webp&region=us', title:'Pure Blonde', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653717', title:'Essential Talent', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653716', hash:'f903dda834', poster:'https://i.vimeocdn.com/video/2160356446-e47dcd876666a267dcd31f0416979964b546de30ca6e282b667bc5b2085c1c55-d?f=webp&region=us', title:'Evair', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1194653715', title:'Catch Cardi', ratio:'16/9', credit:'In collaboration with Autonomous' },
+  { id:'1191294534', hash:'4a206c4b78', title:'Star Trek — Strange New Worlds', ratio:'16/9', credit:'In collaboration with Bunker' },
+  { id:'955628500', hash:'9194707e37', title:'Skybox', ratio:'16/9', credit:'In collaboration with Bunker' },
+  { id:'569586701', hash:'58fca01ca8', title:'Covid-19 Tracer App', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'555999608', hash:'e8fe123c67', title:'Ngāti Paoa', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'555999370', hash:'eac5c5dfde', title:'Waikato Tainui', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'512845330', hash:'e088b0c97e', title:'Isuzu D-Max', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'510952804', hash:'e51dffd07a', title:'Diwali', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'500605000', hash:'feb15acd30', title:'Subaru Forester', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'493925028', hash:'96bbdfa7d4', title:'Covid-19 PSA Aotearoa', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'452051201', hash:'380a5f02cb', title:'Pecha Kucha Titles', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'443219985', hash:'9c668770ec', title:'Les Mills x Reebok', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'436294611', hash:'cd2eb843b0', title:'Tmp Master Vo 060720-1', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'418267921', hash:'8dfcf043cb', title:'CD_30_0045', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'392438036', hash:'0b0ea7eeeb', title:'Tuia 250 Titles', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'385859820', hash:'c385d25318', title:'Auckland Museum — Māori Journey II', ratio:'1/1' },
+  { id:'385857331', hash:'44fa91d3fa', title:'Auckland Museum — Māori Journey I', ratio:'3.5/1' },
+  { id:'373006334', hash:'1f2c94642f', title:'Spark Play', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'358957972', hash:'83b7099aa4', title:'RAV4 — Soccer Mum', ratio:'16/9', credit:'In collaboration with CREATURE' },
+  { id:'340617285', hash:'3847f26e4e', title:'Monstrum Marinum', ratio:'16/9' },
+  { id:'317890579', hash:'12f6d0270c', title:'Hyundai', ratio:'16/9' },
+  { id:'305411311', hash:'59013132dc', title:'Planets', ratio:'16/9' },
+  { id:'303571158', hash:'7cb82c2fba', title:'Light and Lines', ratio:'16/9' },
+  { id:'302933026', hash:'0354b4b798', title:'Flower Animation', ratio:'16/9' },
+  { id:'281519655', hash:'94b8ecca59', title:'Xplore Orbs', ratio:'16/9' },
+  { id:'280441199', hash:'958fe47667', title:'Cadbury Catch', ratio:'16/9', credit:'In collaboration with TVNZ Blacksand' },
+  { id:'269093431', hash:'55bfd50669', title:'Meridian Energy', ratio:'16/9', credit:'In collaboration with toybox' },
+  { id:'239045152', hash:'eeb9fb75ae', title:'Genesis Energy', ratio:'16/9', credit:'In collaboration with toybox' },
+  { id:'219455154', hash:'294659423f', title:'Nike Quantum', ratio:'16/9' },
+  { id:'24907528', hash:'6d4021bb5d', title:'Kidszone — Night and Day', ratio:'16/9' },
+  { id:'23517945', hash:'0a6d836aba', title:'Kidszone — Lights', ratio:'16/9' },
+  // --- Branding & identity. These are stills, not video. An entry with an
+  // images array opens a lightbox instead of the Vimeo player. ---
+  { key:'tvnz6', title:'TVNZ 6 — Channel Branding', ratio:'1/2.6',
+    images:['work/tvnz6.jpg'] },
+  { key:'uchannel', title:'U — Channel Identity', ratio:'1/2.6',
+    images:['work/u-channel.jpg'] },
+  { key:'dexster', title:'Dexster — Brand & Product', ratio:'1/1.1',
+    images:['work/dexster-01.jpg','work/dexster-04.jpg','work/dexster-02.jpg','work/dexster-03.jpg'] },
+  { key:'ezyroller', title:'EzyRoller — Brand System', ratio:'1/1.6',
+    images:['work/ezyroller-01.jpg','work/ezyroller-02.jpg'] },
+  { key:'noodles', title:'Noodles — Look Development', ratio:'16/9',
+    images:['work/noodles-01.jpg','work/noodles-02.jpg','work/noodles-03.jpg','work/noodles-04.jpg','work/noodles-05.jpg'] },
+
+  { id:'23517075', hash:'ffb19398af', title:'Kidszone — Nature', ratio:'16/9' }
+];
+
 (function(){
   'use strict';
 
-  var hero = document.querySelector('.hero');
-  var disc = document.getElementById('disc');
-  /* every element carrying this class gets masked so lines can cross it */
-  var maskables = document.querySelectorAll('.sline');
+  /* ---------- build the grid ---------- */
+  var grid = document.getElementById('grid');
 
-  /* ===== reveal ===== */
+  WORK.forEach(function(w){
+    var t = document.createElement('div');
+    t.className = 'tile';
+    t.setAttribute('role','button');
+    t.setAttribute('tabindex','0');
+    t.setAttribute('aria-label', 'Play ' + w.title);
+    if(w.id) t.dataset.vimeo = w.id;
+    if(w.hash) t.dataset.hash = w.hash;
+    if(w.images) t.dataset.images = w.images.join('|');
+    t.dataset.title = w.title || '';
+    if(w.credit) t.dataset.credit = w.credit;
+    t.style.aspectRatio = w.ratio || '16/9';
+
+    var img = document.createElement('img');
+    img.alt = w.title;
+    img.loading = 'lazy';
+    /* w.poster is the url Vimeo publishes for that video, used where we have
+       it because vumbnail only serves a small frame. vumbnail is the fallback. */
+    var fb = w.id ? ('https://vumbnail.com/' + w.id + '.jpg') : '';
+    img.onerror = function(){
+      if(img.src !== fb){ img.src = fb; return; }
+      img.remove();
+    };
+    img.src = w.poster || (w.images ? w.images[0] : fb);
+    if(w.images){ img.onerror = function(){ img.remove(); }; }
+
+    if(w.images && w.images.length > 1){
+      var n = document.createElement('span');
+      n.className = 'tile-count';
+      n.textContent = w.images.length;
+      t.appendChild(n);
+    }
+
+    var veil = document.createElement('div');
+    veil.className = 'tile-veil';
+    var h = document.createElement('p');
+    h.className = 'tile-title';
+    h.textContent = w.title;
+    veil.appendChild(h);
+
+    t.appendChild(img);
+    t.appendChild(veil);
+    grid.appendChild(t);
+  });
+
+  /* ---------- reveal on scroll ---------- */
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  },{threshold:.12});
-  document.querySelectorAll('.rise').forEach(function(el){ io.observe(el); });
+  },{threshold:.08});
+  document.querySelectorAll('.tile').forEach(function(el){ io.observe(el); });
 
-  /* ===== showreel ===== */
-  var panel = document.getElementById('reelPanel');
-  if(panel){
-    panel.addEventListener('click', function(){
-      var id = panel.getAttribute('data-vimeo');
-      if(!id || panel.querySelector('iframe')) return;
-      var f = document.createElement('iframe');
-      f.src = 'https://player.vimeo.com/video/' + id + '?h=25c6bf4d23&autoplay=1&badge=0&byline=0&title=0&portrait=0&dnt=1';
-      f.setAttribute('allow','autoplay; fullscreen; picture-in-picture');
-      f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
-      f.setAttribute('title','PBK showreel');
-      panel.appendChild(f);
-      var face = document.getElementById('reelFace');
-      if(face) face.style.display = 'none';
-      var poster = document.getElementById('reelPoster');
-      if(poster) poster.style.display = 'none';
-    });
-  }
+  /* ---------- modal ---------- */
+  var modal = document.getElementById('modal');
+  var frame = document.getElementById('modalFrame');
 
-  /* ===== video modal =====
-     Placed above the flow field, because that block early-returns
-     if the canvas is missing and would skip everything after it. */
-  var modal   = document.getElementById('modal');
-  var mFrame  = document.getElementById('modalFrame');
-  var mTitle  = document.getElementById('modalTitle');
+  var mTitle = document.getElementById('modalTitle');
   var mCredit = document.getElementById('modalCredit');
 
-  function openVideo(el){
-    var id = el.getAttribute('data-vimeo');
-    if(!id || !modal) return;
-    var hash = el.getAttribute('data-hash');
-    mFrame.src = 'https://player.vimeo.com/video/' + id +
-                 (hash ? '?h=' + hash + '&' : '?') +
-                 'autoplay=1&badge=0&byline=0&title=0&portrait=0&dnt=1';
-    if(mTitle)  mTitle.textContent  = el.getAttribute('data-title')  || '';
-    if(mCredit) mCredit.textContent = el.getAttribute('data-credit') || '';
+  function open(id, hash, title, credit){
+    if(!id) return;
+    frame.src = 'https://player.vimeo.com/video/' + id +
+                (hash ? '?h=' + hash + '&' : '?') +
+                'autoplay=1&badge=0&byline=0&title=0&portrait=0&dnt=1';
+    if(mTitle)  mTitle.textContent  = title  || '';
+    if(mCredit) mCredit.textContent = credit || '';
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-  function closeVideo(){
-    if(!modal) return;
-    mFrame.src = '';
+  function close(){
+    frame.src = '';
     modal.classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.piece-visual[data-vimeo], .trio-cell[data-vimeo]').forEach(function(el){
-    el.setAttribute('role','button');
-    el.setAttribute('tabindex','0');
-    el.setAttribute('aria-label','Play ' + (el.getAttribute('data-title') || 'video'));
-    el.addEventListener('click', function(){ openVideo(el); });
-    el.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openVideo(el); }
-    });
-  });
+  /* ---------- lightbox for still projects ---------- */
+  var lb      = document.getElementById('lightbox');
+  var lbImg   = document.getElementById('lbImg');
+  var lbTitle = document.getElementById('lbTitle');
+  var lbCount = document.getElementById('lbCount');
+  var lbSet   = [];
+  var lbAt    = 0;
 
-  var mClose = document.getElementById('modalClose');
-  if(mClose) mClose.addEventListener('click', closeVideo);
-  if(modal) modal.addEventListener('click', function(e){ if(e.target === modal) closeVideo(); });
+  function lbShow(i){
+    if(!lbSet.length) return;
+    lbAt = (i + lbSet.length) % lbSet.length;
+    lbImg.src = lbSet[lbAt];
+    lbCount.textContent = lbSet.length > 1 ? (lbAt+1) + ' / ' + lbSet.length : '';
+  }
+  function lbOpen(list, title){
+    lbSet = list;
+    lbTitle.textContent = title || '';
+    lb.classList.toggle('single', lbSet.length < 2);
+    lbShow(0);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose(){
+    lb.classList.remove('open');
+    lbImg.src = '';
+    lbSet = [];
+    document.body.style.overflow = '';
+  }
+  document.getElementById('lbClose').addEventListener('click', lbClose);
+  document.getElementById('lbPrev').addEventListener('click', function(){ lbShow(lbAt-1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ lbShow(lbAt+1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb || e.target.className === 'lb-stage') lbClose(); });
+
+  /* ---------- one handler for both kinds of tile ---------- */
+  function activate(t){
+    if(!t) return;
+    if(t.dataset.images){
+      lbOpen(t.dataset.images.split('|'), t.dataset.title);
+    } else {
+      open(t.dataset.vimeo, t.dataset.hash, t.dataset.title, t.dataset.credit);
+    }
+  }
+  grid.addEventListener('click', function(e){
+    activate(e.target.closest('.tile'));
+  });
+  grid.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var t = e.target.closest('.tile');
+    if(t){ e.preventDefault(); activate(t); }
+  });
+  document.getElementById('modalClose').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && modal && modal.classList.contains('open')) closeVideo();
+    if(e.key === 'Escape'){
+      if(modal.classList.contains('open')) close();
+      if(lb.classList.contains('open')) lbClose();
+    }
+    if(lb.classList.contains('open')){
+      if(e.key === 'ArrowLeft')  lbShow(lbAt-1);
+      if(e.key === 'ArrowRight') lbShow(lbAt+1);
+    }
   });
 
-  /* ===== flow field ===== */
-  /* Set to false to switch off the dark-lines-over-PBK layer entirely.
-     Useful for telling apart a canvas problem from a font problem. */
-  var DARK_OVER_TYPE = true;
-
+  /* ---------- flow field, same as the home page ---------- */
   var cv = document.getElementById('field');
   if(!cv) return;
   var ctx = cv.getContext('2d', { alpha:false });
-  var tcv = document.getElementById('fieldTop');
-  var tctx = (tcv && DARK_OVER_TYPE) ? tcv.getContext('2d') : null;
-  if(tcv && !DARK_OVER_TYPE) tcv.style.display = 'none';
-  var hero = document.querySelector('.hero');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var W=0, H=0, DPR=1;
-
-  /* ---- pixel mask of the PBK letterforms, in document coordinates ---- */
-  var MASK=null, MASKH=0, MBOX=null;
-
-  function buildMask(){
-    MASK = null; MASKH = 0; MBOX = null;
-    if(!maskables.length || !hero || !W) return;
-    var hr = hero.getBoundingClientRect();
-    MASKH = Math.ceil(hr.height);
-    if(MASKH <= 0 || MASKH > 4000) return;
-
-    var mc = document.createElement('canvas');
-    mc.width = W; mc.height = MASKH;
-    var mx = mc.getContext('2d', { willReadFrequently:true });
-    mx.textAlign = 'center';
-    mx.textBaseline = 'alphabetic';
-    mx.fillStyle = '#fff';
-
-    /* draw every masked line into the offscreen canvas at its real position */
-    for(var e=0;e<maskables.length;e++){
-      var el = maskables[e];
-      var txt = el.textContent.trim();
-      if(!txt) continue;
-      var r  = el.getBoundingClientRect();
-      var cs = getComputedStyle(el);
-      mx.font = cs.fontStyle+' '+cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;
-      try { mx.letterSpacing = cs.letterSpacing; } catch(err){}
-
-      var m = mx.measureText(txt);
-      /* work out the baseline the way CSS does, not by centring the ink */
-      var fAsc  = m.fontBoundingBoxAscent;
-      var fDesc = m.fontBoundingBoxDescent;
-      var topInHero = (r.top - hr.top);
-      var baseline;
-      if(typeof fAsc === 'number' && typeof fDesc === 'number' && (fAsc + fDesc) > 0){
-        var lineBox = parseFloat(cs.lineHeight);
-        if(!isFinite(lineBox)) lineBox = r.height;
-        baseline = topInHero + (lineBox - (fAsc + fDesc))/2 + fAsc;
-      } else {
-        var asc  = m.actualBoundingBoxAscent  || parseFloat(cs.fontSize)*0.7;
-        var desc = m.actualBoundingBoxDescent || 0;
-        baseline = topInHero + r.height/2 + (asc - desc)/2;
-      }
-      mx.fillText(txt, r.left + r.width/2, baseline);
-    }
-
-    var d;
-    try { d = mx.getImageData(0,0,W,MASKH).data; } catch(e2){ return; }
-
-    /* only fully opaque pixels count, so antialiased edges are excluded */
-    var raw = new Uint8Array(W*MASKH);
-    for(var i=0, j=3; i<raw.length; i++, j+=4){ raw[i] = d[j] > 232 ? 1 : 0; }
-
-    /* then pull the mask 2px in, so dark strokes stay inside the letters */
-    var mask = erode(raw, W, MASKH, 2);
-
-    var x0=W, y0=MASKH, x1=0, y1=0, px, py;
-    for(var k=0;k<mask.length;k++){
-      if(mask[k]){
-        px = k % W; py = (k / W) | 0;
-        if(px < x0) x0 = px;
-        if(px > x1) x1 = px;
-        if(py < y0) y0 = py;
-        if(py > y1) y1 = py;
-      }
-    }
-    MASK = mask;
-    MBOX = (x1 > x0) ? { x0:x0-4, y0:y0-4, x1:x1+4, y1:y1+4 } : null;
-  }
-
-  /* separable erosion: a pixel survives only if everything within r is solid */
-  function erode(src, w, h, r){
-    var tmp = new Uint8Array(w*h), out = new Uint8Array(w*h);
-    var x, y, k, ok, row, xx, yy;
-    for(y=0;y<h;y++){
-      row = y*w;
-      for(x=0;x<w;x++){
-        ok = 1;
-        for(k=-r;k<=r;k++){
-          xx = x+k;
-          if(xx<0 || xx>=w || !src[row+xx]){ ok = 0; break; }
-        }
-        tmp[row+x] = ok;
-      }
-    }
-    for(x=0;x<w;x++){
-      for(y=0;y<h;y++){
-        ok = 1;
-        for(k=-r;k<=r;k++){
-          yy = y+k;
-          if(yy<0 || yy>=h || !tmp[yy*w+x]){ ok = 0; break; }
-        }
-        out[y*w+x] = ok;
-      }
-    }
-    return out;
-  }
-
-
-  var scrollY = 0;
-
-  function onGlyph(x,y){
-    if(!MASK) return false;
-    var dy = y + scrollY;
-    if(dy < 0 || dy >= MASKH) return false;
-    var xi = x|0;
-    if(xi < 0 || xi >= W) return false;
-    return MASK[(dy|0)*W + xi] === 1;
-  }
+  var W=0,H=0,DPR=1;
 
   var PERM = new Uint8Array(512);
   (function(){
-    var p=new Uint8Array(256), i,j,t;
+    var p=new Uint8Array(256),i,j,t;
     for(i=0;i<256;i++) p[i]=i;
     for(i=255;i>0;i--){ j=(Math.random()*(i+1))|0; t=p[i]; p[i]=p[j]; p[j]=t; }
     for(i=0;i<512;i++) PERM[i]=p[i&255];
@@ -1025,146 +508,70 @@ a{color:inherit}
   function fadeC(t){ return t*t*t*(t*(t*6-15)+10); }
   function mix(a,b,t){ return a+t*(b-a); }
   function grad(h,x,y){
-    switch(h&3){ case 0: return x+y; case 1: return -x+y; case 2: return x-y; default: return -x-y; }
+    switch(h&3){ case 0:return x+y; case 1:return -x+y; case 2:return x-y; default:return -x-y; }
   }
   function noise(x,y){
-    var X=Math.floor(x)&255, Y=Math.floor(y)&255;
-    var xf=x-Math.floor(x), yf=y-Math.floor(y);
-    var u=fadeC(xf), v=fadeC(yf);
-    var aa=PERM[PERM[X]+Y], ba=PERM[PERM[X+1]+Y];
-    var ab=PERM[PERM[X]+Y+1], bb=PERM[PERM[X+1]+Y+1];
-    return mix(
-      mix(grad(aa,xf,yf), grad(ba,xf-1,yf), u),
-      mix(grad(ab,xf,yf-1), grad(bb,xf-1,yf-1), u),
-      v
-    );
+    var X=Math.floor(x)&255,Y=Math.floor(y)&255;
+    var xf=x-Math.floor(x),yf=y-Math.floor(y);
+    var u=fadeC(xf),v=fadeC(yf);
+    var aa=PERM[PERM[X]+Y],ba=PERM[PERM[X+1]+Y];
+    var ab=PERM[PERM[X]+Y+1],bb=PERM[PERM[X+1]+Y+1];
+    return mix(mix(grad(aa,xf,yf),grad(ba,xf-1,yf),u),
+               mix(grad(ab,xf,yf-1),grad(bb,xf-1,yf-1),u),v);
   }
-
   var SCALE=0.0018, drift=0;
-  function angleAt(x,y){ return noise(x*SCALE, y*SCALE + drift) * Math.PI * 3; }
+  function angleAt(x,y){ return noise(x*SCALE,y*SCALE+drift)*Math.PI*3; }
 
-  /* each colour has a dark twin, used when the line crosses the white type */
-  var ICE=[111,214,255],  ICE_D=[8,54,84];
-  var VIO=[106,92,255],   VIO_D=[22,16,78];
-  var EMB=[255,122,61],   EMB_D=[84,28,6];
-  var PALE=[200,214,240], PALE_D=[24,28,42];
-  var parts=[], AMBIENT=300, CAP=2200;
+  var ICE=[111,214,255],VIO=[106,92,255],EMB=[255,122,61],PALE=[200,214,240];
+  var parts=[],AMBIENT=300,CAP=2200;
 
   function ambient(){
-    var e=Math.random(), x, y;
+    var e=Math.random(),x,y;
     if(e<.5){ x=Math.random()*W; y=Math.random()*H; }
     else if(e<.75){ x=-20+Math.random()*40; y=Math.random()*H; }
     else { x=Math.random()*W; y=H+20-Math.random()*40; }
     var r=Math.random();
-    var c  = r<.55 ? VIO   : (r<.9 ? ICE   : PALE);
-    var cd = r<.55 ? VIO_D : (r<.9 ? ICE_D : PALE_D);
-    return {
-      x:x, y:y, px:x, py:y,
-      life:390+Math.random()*630, max:1020,
-      w:0.4+Math.random()*0.5,
-      sp:0.5+Math.random()*0.9,
-      a0:0.085+Math.random()*0.11,
-      c:c, cd:cd, amb:true
-    };
+    var c = r<.55?VIO:(r<.9?ICE:PALE);
+    return { x:x,y:y,px:x,py:y,
+      life:390+Math.random()*630,max:1020,
+      w:0.4+Math.random()*0.5,sp:0.5+Math.random()*0.9,
+      a0:0.085+Math.random()*0.11,c:c,amb:true };
   }
-
   function emit(x,y){
-    if(parts.length > CAP) return;
+    if(parts.length>CAP) return;
     for(var i=0;i<6;i++){
       var r=Math.random();
-      var c  = r<.5 ? ICE   : (r<.82 ? PALE   : EMB);
-      var cd = r<.5 ? ICE_D : (r<.82 ? PALE_D : EMB_D);
-      var sp = 1.1+Math.random()*1.5;
-      var ang = Math.random()*Math.PI*2;
-      var sx = x+(Math.random()-.5)*26;
-      var sy = y+(Math.random()-.5)*26;
-      parts.push({
-        x:sx, y:sy, px:sx, py:sy,
-        vx:Math.cos(ang)*sp, vy:Math.sin(ang)*sp,
-        k:0.022+Math.random()*0.016,   /* low = holds its own line longer */
-        life:225+Math.random()*300, max:525,
-        w:0.5+Math.random()*0.8,
-        sp:sp,
-        a0:0.28+Math.random()*0.26,
-        c:c, cd:cd, amb:false, tr:[sx,sy]
-      });
+      var c = r<.5?ICE:(r<.82?PALE:EMB);
+      var sp=1.1+Math.random()*1.5, ang=Math.random()*Math.PI*2;
+      var sx=x+(Math.random()-.5)*26, sy=y+(Math.random()-.5)*26;
+      parts.push({ x:sx,y:sy,px:sx,py:sy,
+        vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,
+        k:0.022+Math.random()*0.016,
+        life:225+Math.random()*300,max:525,
+        w:0.5+Math.random()*0.8,sp:sp,
+        a0:0.28+Math.random()*0.26,c:c,amb:false });
     }
   }
-
   function step(p){
-    var a = angleAt(p.x,p.y);
-    p.px = p.x; p.py = p.y;
-    if(p.amb){
-      p.x += Math.cos(a)*p.sp;
-      p.y += Math.sin(a)*p.sp;
-    } else {
-      /* ease into the flow field rather than snapping onto it */
-      var fx = Math.cos(a)*p.sp, fy = Math.sin(a)*p.sp;
-      p.vx += (fx - p.vx)*p.k;
-      p.vy += (fy - p.vy)*p.k;
-      p.x += p.vx;
-      p.y += p.vy;
-      var tr = p.tr;
-      tr.push(p.x, p.y);
-      if(tr.length > 20) tr.splice(0, tr.length - 20);
+    var a=angleAt(p.x,p.y);
+    p.px=p.x; p.py=p.y;
+    if(p.amb){ p.x+=Math.cos(a)*p.sp; p.y+=Math.sin(a)*p.sp; }
+    else{
+      var fx=Math.cos(a)*p.sp, fy=Math.sin(a)*p.sp;
+      p.vx+=(fx-p.vx)*p.k; p.vy+=(fy-p.vy)*p.k;
+      p.x+=p.vx; p.y+=p.vy;
     }
     p.life--;
   }
-
   function draw(p){
-    var t = p.life/p.max;
-    var al = p.a0 * (t<.12 ? t/.12 : 1) * (t>.88 ? (1-t)/.12 : 1);
-    if(al <= 0) return;
-    p.al = al;
-
-    ctx.strokeStyle = 'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+al.toFixed(3)+')';
-    ctx.lineWidth = p.w;
-    ctx.beginPath();
-    ctx.moveTo(p.px,p.py);
-    ctx.lineTo(p.x,p.y);
-    ctx.stroke();
+    var t=p.life/p.max;
+    var al=p.a0*(t<.12?t/.12:1)*(t>.88?(1-t)/.12:1);
+    if(al<=0) return;
+    ctx.strokeStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+al.toFixed(3)+')';
+    ctx.lineWidth=p.w;
+    ctx.beginPath(); ctx.moveTo(p.px,p.py); ctx.lineTo(p.x,p.y); ctx.stroke();
   }
-
-  /* The dark-over-type layer is redrawn from scratch every frame from each
-     cursor line's own trail. Nothing is ever left behind, so faint residue
-     cannot build up on the letters the way it does with alpha erasing. */
-  function paintOverType(){
-    if(!tctx) return;
-    tctx.clearRect(0,0,W,H);
-    if(!MASK || !MBOX) return;
-    if(scrollY > MASKH + 80) return;
-
-    var bx0 = MBOX.x0, bx1 = MBOX.x1;
-    var by0 = MBOX.y0 - scrollY, by1 = MBOX.y1 - scrollY;
-
-    for(var i=0;i<parts.length;i++){
-      var p = parts[i];
-      if(p.amb || !p.tr || !p.al) continue;
-      if(p.x < bx0 - 30 || p.x > bx1 + 30 || p.y < by0 - 30 || p.y > by1 + 30) continue;
-
-      var tr = p.tr, n = tr.length;
-      if(n < 4) continue;
-      tctx.lineWidth = p.w;
-      for(var j=2;j<n;j+=2){
-        var ax=tr[j-2], ay=tr[j-1], bx=tr[j], by=tr[j+1];
-        if(!onGlyph((ax+bx)*0.5, (ay+by)*0.5)) continue;
-        var fadeT = j/(n-2);
-        var dal = p.al * 2.1 * fadeT;
-        if(dal > 0.9) dal = 0.9;
-        if(dal < 0.02) continue;
-        tctx.strokeStyle = 'rgba('+p.cd[0]+','+p.cd[1]+','+p.cd[2]+','+dal.toFixed(3)+')';
-        tctx.beginPath();
-        tctx.moveTo(ax,ay);
-        tctx.lineTo(bx,by);
-        tctx.stroke();
-      }
-    }
-  }
-
-  function dead(p){
-    return p.life<=0 || p.x<-60 || p.x>W+60 || p.y<-60 || p.y>H+60;
-  }
-
+  function dead(p){ return p.life<=0||p.x<-60||p.x>W+60||p.y<-60||p.y>H+60; }
   function still(){
     ctx.fillStyle='#08090c'; ctx.fillRect(0,0,W,H);
     for(var i=0;i<460;i++){
@@ -1172,75 +579,46 @@ a{color:inherit}
       for(var s=0;s<260;s++){ if(dead(p)) break; step(p); draw(p); }
     }
   }
-
   function resize(){
-    DPR = Math.min(window.devicePixelRatio||1, 2);
-    W = window.innerWidth; H = window.innerHeight;
-    cv.width = Math.floor(W*DPR); cv.height = Math.floor(H*DPR);
-    cv.style.width = W+'px'; cv.style.height = H+'px';
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=window.innerWidth; H=window.innerHeight;
+    cv.width=Math.floor(W*DPR); cv.height=Math.floor(H*DPR);
+    cv.style.width=W+'px'; cv.style.height=H+'px';
     ctx.setTransform(DPR,0,0,DPR,0,0);
     ctx.fillStyle='#08090c'; ctx.fillRect(0,0,W,H);
     ctx.lineCap='round';
-
-    if(tctx){
-      tcv.width = Math.floor(W*DPR); tcv.height = Math.floor(H*DPR);
-      tcv.style.width = W+'px'; tcv.style.height = H+'px';
-      tctx.setTransform(DPR,0,0,DPR,0,0);
-      tctx.clearRect(0,0,W,H);
-      tctx.lineCap='round';
-    }
-
-    AMBIENT = W<760 ? 160 : 300;
-    buildMask();
-    parts = [];
+    AMBIENT = W<760?160:300;
+    parts=[];
     for(var i=0;i<AMBIENT;i++) parts.push(ambient());
     if(reduce) still();
   }
-
-  var running = true;
+  var running=true;
   function loop(){
     requestAnimationFrame(loop);
     if(!running) return;
-    scrollY = window.scrollY || window.pageYOffset || 0;
-    drift += 0.0007;
-
-    ctx.fillStyle = 'rgba(8,9,12,0.028)';
+    drift+=0.0007;
+    ctx.fillStyle='rgba(8,9,12,0.028)';
     ctx.fillRect(0,0,W,H);
-
     for(var i=parts.length-1;i>=0;i--){
-      var p = parts[i];
+      var p=parts[i];
       step(p); draw(p);
-      if(dead(p)){
-        if(p.amb) parts[i] = ambient();
-        else parts.splice(i,1);
-      }
+      if(dead(p)){ if(p.amb) parts[i]=ambient(); else parts.splice(i,1); }
     }
-
-    paintOverType();
   }
-
   var lastX=0,lastY=0,lastT=0;
-  function onMove(e){
+  document.addEventListener('pointermove',function(e){
     if(reduce) return;
-    var now = performance.now();
-    if(now-lastT < 14) return;
-    lastT = now;
-    var x=e.clientX, y=e.clientY;
-    var dx=x-lastX, dy=y-lastY;
+    var now=performance.now();
+    if(now-lastT<14) return;
+    lastT=now;
+    var x=e.clientX,y=e.clientY;
+    var dx=x-lastX,dy=y-lastY;
     lastX=x; lastY=y;
-    if(Math.sqrt(dx*dx+dy*dy) < 1.5) return;
+    if(Math.sqrt(dx*dx+dy*dy)<1.5) return;
     emit(x,y);
-  }
-
-  window.addEventListener('resize', resize, { passive:true });
-  document.addEventListener('pointermove', onMove, { passive:true });
-  document.addEventListener('visibilitychange', function(){ running = !document.hidden; });
-
-  function refit(){ buildMask(); }
-  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(refit); }
-  window.addEventListener('load', refit);
-  /* deliberately not observing the monogram: widening a sub-line changes
-     the shared box, which re-triggers the observer and loops forever */
+  },{passive:true});
+  window.addEventListener('resize',resize,{passive:true});
+  document.addEventListener('visibilitychange',function(){ running=!document.hidden; });
 
   resize();
   if(!reduce) requestAnimationFrame(loop);
