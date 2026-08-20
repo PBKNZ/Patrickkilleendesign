@@ -285,14 +285,15 @@ a{color:inherit}
             '4/5' portrait, '2.39/1' scope.
    ========================================================= */
 var WORK = [
-  // Ordered newest to oldest. Vimeo ids increase with upload date, so the
-  // id is the sort key. Move an entry by hand if its upload date and its
-  // production date differ.
+  // Videos run newest to oldest by Vimeo id. Stills follow at the end.
+  { id:'1219803365', hash:'c762a73b65', title:'RAV4 — Soccer Mum', ratio:'16/9', credit:'In collaboration with CREATURE', poster:'https://i.vimeocdn.com/video/2192093049-10316896ffb200a914c35af6f475d726f510f2506f18b0fe8b4b11d3698dfaa5-d?f=webp&region=us' },
+  { id:'1219803364', hash:'d1a9ffceff', title:'Genesis Energy', ratio:'16/9', credit:'In collaboration with toybox', poster:'https://i.vimeocdn.com/video/2192092543-4b0ea83133e5fb1017d8a050f5846d415fd9c9ff3c890e3be81d140fac8555d7-d?f=webp&region=us' },
+  { id:'1219798235', hash:'988a04a555', title:'Samsung Galaxy Z Flip Series', ratio:'16/9', credit:'In collaboration with Cheil', poster:'https://i.vimeocdn.com/video/2192086697-1570182a036f3308748afd531e284df0ab761430e9668fe6feb01e21feef5fcb-d?f=webp&region=us' },
+  { id:'1219074620', hash:'25c6bf4d23', title:'Showreel 2026', ratio:'16/9', poster:'https://i.vimeocdn.com/video/2191177772-700eae5dbfba8f11a06a9bcff6a00ec09dcb0899655751be1424c6800ea17249-d?f=webp&region=us' },
   { id:'1218504798', hash:'a8be75b27a', title:'Vayu New Wing, Aura', ratio:'16/9', poster:'https://i.vimeocdn.com/video/2190459927-27d3acdbca7cf2f7eac3fb43744797c6b84f8f36642b93dae953796c72c7ed99-d?f=webp&region=us&v=20260815' },
   { poster:'work/gillette-running.jpg', id:'1218467584', hash:'1807ea1ef0', title:'Gillette x NBA — Running', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
   { poster:'https://i.vimeocdn.com/video/2190405215-d3a32f46ae7f4d481381e7a6ab9943f600b4ddf3252c8640cf85b499087e0298-d?f=webp&region=us&v=20260815', id:'1218467583', hash:'c0d5bd0cd6', title:'Gillette x NBA — Tram', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
   { poster:'work/gillette-alley.jpg', id:'1218467582', hash:'dd771d7cc9', title:'Gillette x NBA — Melbourne Alley', ratio:'1/1.15', credit:'In collaboration with Havas Media Network Australia' },
-  { id:'1219074620', hash:'25c6bf4d23', title:'Showreel 2026', ratio:'16/9', poster:'https://i.vimeocdn.com/video/2191177772-700eae5dbfba8f11a06a9bcff6a00ec09dcb0899655751be1424c6800ea17249-d?f=webp&region=us' },
   { id:'1202405326', title:'23 Bulbs Data', ratio:'16/9', credit:'In collaboration with Autonomous' },
   { id:'1202405325', title:'Hole In One', ratio:'16/9', credit:'In collaboration with Autonomous' },
   { id:'1194653788', title:'Sora', ratio:'16/9', credit:'In collaboration with Autonomous' },
@@ -317,7 +318,6 @@ var WORK = [
   { id:'385859820', hash:'c385d25318', title:'Auckland Museum — Māori Journey II', ratio:'1/1' },
   { id:'385857331', hash:'44fa91d3fa', title:'Auckland Museum — Māori Journey I', ratio:'3.5/1' },
   { id:'373006334', hash:'1f2c94642f', title:'Spark Play', ratio:'16/9', credit:'In collaboration with CREATURE' },
-  { id:'358957972', hash:'83b7099aa4', title:'RAV4 — Soccer Mum', ratio:'16/9', credit:'In collaboration with CREATURE' },
   { id:'340617285', hash:'3847f26e4e', title:'Monstrum Marinum', ratio:'16/9' },
   { id:'317890579', hash:'12f6d0270c', title:'Hyundai', ratio:'16/9' },
   { id:'305411311', hash:'59013132dc', title:'Planets', ratio:'16/9' },
@@ -326,24 +326,18 @@ var WORK = [
   { id:'281519655', hash:'94b8ecca59', title:'Xplore Orbs', ratio:'16/9' },
   { id:'280441199', hash:'958fe47667', title:'Cadbury Catch', ratio:'16/9', credit:'In collaboration with TVNZ Blacksand' },
   { id:'269093431', hash:'55bfd50669', title:'Meridian Energy', ratio:'16/9', credit:'In collaboration with toybox' },
-  { id:'239045152', hash:'eeb9fb75ae', title:'Genesis Energy', ratio:'16/9', credit:'In collaboration with toybox' },
   { id:'219455154', hash:'294659423f', title:'Nike Quantum', ratio:'16/9' },
   { id:'24907528', hash:'6d4021bb5d', title:'Kidszone — Night and Day', ratio:'16/9' },
   { id:'23517945', hash:'0a6d836aba', title:'Kidszone — Lights', ratio:'16/9' },
+  { id:'23517075', hash:'ffb19398af', title:'Kidszone — Nature', ratio:'16/9' },
+
   // --- Branding & identity. These are stills, not video. An entry with an
   // images array opens a lightbox instead of the Vimeo player. ---
-  { key:'tvnz6', title:'TVNZ 6 — Channel Branding', ratio:'1/2.6',
-    images:['work/tvnz6.jpg'] },
-  { key:'uchannel', title:'U — Channel Identity', ratio:'1/2.6',
-    images:['work/u-channel.jpg'] },
-  { key:'dexster', title:'Dexster — Brand & Product', ratio:'1/1.1',
-    images:['work/dexster-01.jpg','work/dexster-04.jpg','work/dexster-02.jpg','work/dexster-03.jpg'] },
-  { key:'ezyroller', title:'EzyRoller — Brand System', ratio:'1/1.6',
-    images:['work/ezyroller-01.jpg','work/ezyroller-02.jpg'] },
-  { key:'noodles', title:'Noodles — Look Development', ratio:'16/9',
-    images:['work/noodles-01.jpg','work/noodles-02.jpg','work/noodles-03.jpg','work/noodles-04.jpg','work/noodles-05.jpg'] },
-
-  { id:'23517075', hash:'ffb19398af', title:'Kidszone — Nature', ratio:'16/9' }
+  { key:'tvnz6', title:'TVNZ 6 — Channel Branding', ratio:'1/2.6', images:['work/tvnz6.jpg'] },
+  { key:'uchannel', title:'U — Channel Identity', ratio:'1/2.6', images:['work/u-channel.jpg'] },
+  { key:'dexster', title:'Dexster — Brand & Product', ratio:'1/1.1', images:['work/dexster-01.jpg','work/dexster-04.jpg','work/dexster-02.jpg','work/dexster-03.jpg'] },
+  { key:'ezyroller', title:'EzyRoller — Brand System', ratio:'1/1.6', images:['work/ezyroller-01.jpg','work/ezyroller-02.jpg'] },
+  { key:'noodles', title:'Noodles — Look Development', ratio:'16/9', images:['work/noodles-01.jpg','work/noodles-02.jpg','work/noodles-03.jpg','work/noodles-04.jpg','work/noodles-05.jpg'] }
 ];
 
 (function(){
