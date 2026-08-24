@@ -343,6 +343,28 @@ var WORK = [
 (function(){
   'use strict';
 
+  /* ===== poster lookup =====
+     vumbnail cannot see unlisted videos, and almost all of these are
+     unlisted. Vimeo's own oEmbed endpoint can, provided the privacy hash
+     is passed with it. Entries that already carry a poster skip this
+     entirely. vumbnail stays as the last resort. */
+  function loadPoster(img, id, hash){
+    var target = 'https://vimeo.com/' + id + (hash ? '/' + hash : '');
+    var api = 'https://vimeo.com/api/oembed.json?url=' +
+              encodeURIComponent(target) + '&width=1000';
+    var vum = 'https://vumbnail.com/' + id + '.jpg';
+    img.addEventListener('error', function(){
+      if(img.src !== vum) img.src = vum;
+    });
+    fetch(api)
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+      .then(function(d){
+        if(d && d.thumbnail_url) img.src = d.thumbnail_url;
+        else img.src = vum;
+      })
+      .catch(function(){ img.src = vum; });
+  }
+
   /* ---------- build the grid ---------- */
   var grid = document.getElementById('grid');
 
@@ -364,13 +386,16 @@ var WORK = [
     img.loading = 'lazy';
     /* w.poster is the url Vimeo publishes for that video, used where we have
        it because vumbnail only serves a small frame. vumbnail is the fallback. */
-    var fb = w.id ? ('https://vumbnail.com/' + w.id + '.jpg') : '';
-    img.onerror = function(){
-      if(img.src !== fb){ img.src = fb; return; }
-      img.remove();
-    };
-    img.src = w.poster || (w.images ? w.images[0] : fb);
-    if(w.images){ img.onerror = function(){ img.remove(); }; }
+    if(w.images){
+      img.src = w.images[0];
+      img.onerror = function(){ img.remove(); };
+    } else if(w.poster){
+      img.src = w.poster;
+      var fb = 'https://vumbnail.com/' + w.id + '.jpg';
+      img.onerror = function(){ if(img.src !== fb) img.src = fb; else img.remove(); };
+    } else {
+      loadPoster(img, w.id, w.hash);
+    }
 
     if(w.images && w.images.length > 1){
       var n = document.createElement('span');
