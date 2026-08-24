@@ -847,6 +847,23 @@ a{color:inherit}
     });
   }
 
+  /* ===== poster lookup =====
+     vumbnail cannot see unlisted videos. Vimeo's oEmbed endpoint can, when
+     the privacy hash is supplied. Only runs on thumbnails that have no
+     real poster set. */
+  document.querySelectorAll('.piece-img').forEach(function(img){
+    if(img.getAttribute('src').indexOf('vumbnail.com') === -1) return;
+    var host = img.closest('[data-vimeo]');
+    if(!host) return;
+    var id   = host.getAttribute('data-vimeo');
+    var hash = host.getAttribute('data-hash');
+    var target = 'https://vimeo.com/' + id + (hash ? '/' + hash : '');
+    fetch('https://vimeo.com/api/oembed.json?url=' + encodeURIComponent(target) + '&width=1000')
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+      .then(function(d){ if(d && d.thumbnail_url) img.src = d.thumbnail_url; })
+      .catch(function(){});
+  });
+
   /* ===== video modal =====
      Placed above the flow field, because that block early-returns
      if the canvas is missing and would skip everything after it. */
