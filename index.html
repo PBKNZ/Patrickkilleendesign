@@ -288,8 +288,8 @@ a{color:inherit}
   image-rendering:auto;
   transition:transform .7s cubic-bezier(.2,.7,.3,1), filter .45s ease;
 }
-.piece-visual,.trio-cell{cursor:pointer}
-.piece-visual:hover .piece-img,.trio-cell:hover .piece-img{transform:scale(1.04);filter:brightness(.62)}
+.piece-visual,.trio-cell,.duo-cell{cursor:pointer}
+.piece-visual:hover .piece-img,.trio-cell:hover .piece-img,.duo-cell:hover .piece-img{transform:scale(1.04);filter:brightness(.62)}
 .cell-badge{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);
   width:52px;height:52px;border-radius:50%;z-index:3;
@@ -299,10 +299,23 @@ a{color:inherit}
   opacity:0;transition:opacity .35s ease, transform .35s ease;
 }
 .cell-badge svg{width:11px;height:13px;margin-left:2px}
-.piece-visual:hover .cell-badge,.trio-cell:hover .cell-badge{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.piece-visual:hover .cell-badge,.trio-cell:hover .cell-badge,.duo-cell:hover .cell-badge{opacity:1;transform:translate(-50%,-50%) scale(1)}
 
 /* the Gillette triptych */
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+
+/* two verticals side by side, same treatment as the trio */
+.duo{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.duo-cell{
+  position:relative;aspect-ratio:9/16;overflow:hidden;
+  background:linear-gradient(150deg,var(--slate),var(--ink));
+  border:1px solid var(--line);
+}
+.duo-cell::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(150deg,rgba(106,92,255,.16),transparent 60%,rgba(111,214,255,.1));
+}
+.piece--duo{align-items:center}
 .trio-cell{
   position:relative;aspect-ratio:9/16;overflow:hidden;
   background:linear-gradient(150deg,var(--slate),var(--ink));
@@ -535,7 +548,27 @@ a{color:inherit}
       <p class="lede rise" style="max-width:340px">Commercials and social campaigns, channel branding and identity, title sequences, installations, and visual effects for film and television. You have probably seen my work in your day to day life. Now you know who did it.</p>
     </div>
 
-    <!-- 01 — Samsung -->
+    <!-- 01 — Samsung Galaxy Watch, two verticals side by side -->
+    <article class="piece piece--duo rise">
+      <div class="duo">
+        <div class="duo-cell" data-vimeo="1225386312" data-hash="de3b831046" data-title="Samsung Galaxy Watch9" data-credit="In collaboration with Cheil">
+          <img class="piece-img" data-fb="https://vumbnail.com/1225386312.jpg" src="https://i.vimeocdn.com/video/2199091069-dd39ab00878e9972e14407c5bb606fba6967c57723d6d80ad0a0047b42043abe-d?f=webp&amp;region=us" alt="Samsung Galaxy Watch9" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
+          <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
+        </div>
+        <div class="duo-cell" data-vimeo="1225386498" data-hash="f083d40972" data-title="Samsung Galaxy Watch Ultra2" data-credit="In collaboration with Cheil">
+          <img class="piece-img" data-fb="https://vumbnail.com/1225386498.jpg" src="https://i.vimeocdn.com/video/2199120422-404ac3dc64330f0d4d7294bedf82a2c0fe3cf51e6e2c8186c94cc587e2e42e43-d?f=webp&amp;region=us" alt="Samsung Galaxy Watch Ultra2" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
+          <span class="cell-badge"><svg viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="rgba(242,240,246,.92)"/></svg></span>
+        </div>
+      </div>
+      <div class="piece-body">
+        <h3 class="piece-title">Samsung Galaxy Watch</h3>
+        <div class="piece-tags"><span class="tag">3D</span><span class="tag">Motion</span><span class="tag">Social</span></div>
+        <p class="piece-note">Watch9 and Watch Ultra2. Vertical product animation cut for social.</p>
+        <p class="piece-credit">In collaboration with Cheil</p>
+      </div>
+    </article>
+
+    <!-- 02 — Samsung Galaxy Z Flip -->
     <article class="piece rise">
       <div class="piece-visual" data-vimeo="1219798235" data-hash="988a04a555" data-title="Samsung Galaxy Z Flip Series" data-credit="In collaboration with Cheil">
         <img class="piece-img" data-fb="https://vumbnail.com/1219798235.jpg" src="https://i.vimeocdn.com/video/2192086697-1570182a036f3308748afd531e284df0ab761430e9668fe6feb01e21feef5fcb-d?f=webp&amp;region=us" alt="Samsung Galaxy Z Flip Series" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.fb||'';if(!this.src)this.remove();" />
@@ -549,7 +582,7 @@ a{color:inherit}
       </div>
     </article>
 
-    <!-- 02 — Gillette x NBA, three verticals as one piece -->
+    <!-- 03 — Gillette x NBA, three verticals as one piece -->
     <article class="piece piece--trio rise">
       <div class="trio">
         <div class="trio-cell" data-vimeo="1218467583" data-hash="c0d5bd0cd6" data-title="Gillette x NBA — Tram" data-credit="In collaboration with Havas Media Network Australia">
@@ -891,7 +924,7 @@ a{color:inherit}
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.piece-visual[data-vimeo], .trio-cell[data-vimeo]').forEach(function(el){
+  document.querySelectorAll('.piece-visual[data-vimeo], .trio-cell[data-vimeo], .duo-cell[data-vimeo]').forEach(function(el){
     el.setAttribute('role','button');
     el.setAttribute('tabindex','0');
     el.setAttribute('aria-label','Play ' + (el.getAttribute('data-title') || 'video'));
