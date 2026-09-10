@@ -244,7 +244,9 @@ a{color:inherit}
   gap:clamp(24px,4vw,64px);align-items:center;
   padding:clamp(28px,5vh,54px) 0;border-top:1px solid var(--line);
 }
-.piece:nth-child(even) .piece-visual{order:2}
+.piece:nth-of-type(even) .piece-visual,
+.piece:nth-of-type(even) .trio,
+.piece:nth-of-type(even) .duo{order:2}
 .piece-visual{
   position:relative;aspect-ratio:16/9;overflow:hidden;
   background:linear-gradient(135deg,var(--slate),var(--ink));
@@ -481,7 +483,9 @@ a{color:inherit}
 @media (max-width:860px){
   .nav-links{gap:16px}
   .piece{grid-template-columns:1fr;gap:20px}
-  .piece:nth-child(even) .piece-visual{order:0}
+  .piece:nth-of-type(even) .piece-visual,
+  .piece:nth-of-type(even) .trio,
+  .piece:nth-of-type(even) .duo{order:0}
   .about-grid{grid-template-columns:1fr}
   .caps{grid-template-columns:1fr}
 }
@@ -501,7 +505,7 @@ a{color:inherit}
 <nav class="nav">
   <a href="#" class="mark">Patrick Killeen</a>
   <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
+    <li><a href="work.html">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
